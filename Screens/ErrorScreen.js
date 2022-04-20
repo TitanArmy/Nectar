@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const orderAccepted = () => {
+const ErrorScreen = () => {
   return (
     <View>
-      <Text>orderAccepted</Text>
+      <Text>errodfgdffdgr</Text>
     </View>
   )
 }
 
-export default orderAccepted
+export default ErrorScreen
 
 const styles = StyleSheet.create({})

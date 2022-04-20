@@ -3,7 +3,8 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ScrollView } from 'react-native-gesture-handler';
-const Cart = (navigation) => {
+
+const Cart = ({navigation}) => {
   return (
       <ScrollView>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
@@ -90,7 +91,11 @@ const Cart = (navigation) => {
     </View>
    
    
-    <TouchableOpacity style={{justifyContent:'flex-end',alignItems:'center',marginTop:60,padding:20,backgroundColor:'#53B175',borderRadius:15,marginLeft:20,marginRight:20,flexDirection:'row'}} onPress={()=>{alert('clicked')}} >
+    <TouchableOpacity 
+      style={{justifyContent:'flex-end',alignItems:'center',marginTop:60,padding:20,backgroundColor:'#53B175',borderRadius:15,marginLeft:20,marginRight:20,flexDirection:'row'}} 
+      onPress={()=>{navigation.navigate('OrderAccepted')}} 
+
+    >
                 
                 <Text style={{color: '#000',fontWeight:'bold',marginRight:70}}>Go to Checkout</Text>
                 <Text style={{color: '#000',fontWeight:'bold',}}>$12.96</Text>

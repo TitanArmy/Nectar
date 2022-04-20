@@ -3,6 +3,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import CartNavigation from './CartNavigation';
+
 import HomeScreen from '../Screens/HomeScreen';
 import Favourites from '../Screens/Favourites';
 import Explore from '../Screens/Explore';
@@ -51,7 +53,7 @@ const BottomNavigation = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={Cart}
+        component={CartNavigation}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
