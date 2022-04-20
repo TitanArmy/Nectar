@@ -1,21 +1,20 @@
-import { StyleSheet, Text, View,ScrollView } from 'react-native'
-import React from 'react'
-import ProductDetail from './Screens/ProductDetail'
-import Beverages from './Screens/Beverages'
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import React from 'react';
+import ProductDetail from './Screens/ProductDetail';
+import Beverages from './Screens/Beverages';
+import Checkout from './Screens/Checkout';
+import {NavigationContainer} from '@react-navigation/native';
+import BottomNavigation from './Navigation/BottomNavigation';
 
 const App = () => {
   return (
-    <View>
-    <ScrollView>
-      
-    <ProductDetail/>
-    <Beverages/>
-    
-    </ScrollView>
-    </View>
-  )
-}
+    // <Checkout/>
+    <NavigationContainer>
+      <BottomNavigation />
+    </NavigationContainer>
+  );
+};
 
-export default App
+export default App;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
