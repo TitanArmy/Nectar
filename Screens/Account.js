@@ -13,25 +13,27 @@ const Account = ({navigation}) => {
         <View 
         style={{borderRadius:20}}
         >
+          <TouchableOpacity onPress={()=>{alert('Userpage')}}>
           <Image
             style={{width: 40,height: 40,}}
-            source={require('../Assets/user.png')}
+            source={require('../Assets/Users.jpg')}
           />
+          </TouchableOpacity>
        
         </View>
       
         {/* UserNAME */}
         <View style={{paddingLeft:20,justifyContent:'center',}}>
           <View style={{flexDirection:'row',alignItems:'center'}}>
-            <Text style={{fontSize:20,fontWeight:'bold',color:'#000',marginRight:10}}>Yash Dubey</Text>
-            <TouchableOpacity onPress={()=>{alert('userEdited')}}>
+            <Text style={{fontSize:20,fontWeight:'bold',color:'#000',marginRight:10}}>Titan General</Text>
+            <TouchableOpacity onPress={()=>{navigation.navigate('UserPage')}}>
             <Image
               source={require('../Assets/editPen.png')}
             />
             </TouchableOpacity>
           </View>
 
-          <Text>yashDubey@mail.vinove.com</Text>
+          <Text>TitanGeneral@gmail.com</Text>
         </View>
       
       </View>
@@ -43,7 +45,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/Orders.png')}
           />
+          <TouchableOpacity  onPress={()=>{navigation.navigate('Orders')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:9}}>Orders</Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Orders')}}>
         <Image style={{marginRight:5}}
@@ -59,7 +63,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/MyDetails.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Mydetails')}}> 
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>MY Details</Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Mydetails')}}>
         <Image
@@ -75,7 +81,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/Delicery.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Delivery')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}> Delivery Address</Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Delivery')}}>
         <Image
@@ -91,7 +99,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/Payment.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Payment')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}> Payment Methods </Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Payment')}}>
         <Image
@@ -107,7 +117,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/PromoCard.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Promo')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Promo Card</Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Promo')}}>
         <Image
@@ -123,7 +135,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/Bell.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Notification')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Notifications </Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Notification')}}>
         <Image
@@ -139,7 +153,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/help.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Help')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Help</Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Help')}}>
         <Image
@@ -155,7 +171,9 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/about.png')}
           />
+          <TouchableOpacity onPress={()=>{navigation.navigate('About')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>About</Text>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity
          onPress={()=>{navigation.navigate('About')}}

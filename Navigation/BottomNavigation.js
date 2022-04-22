@@ -1,11 +1,11 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import CartNavigation from './CartNavigation';
 import AccountStack from './AccountStack';
-
+import SplashScreen from '../Screens/Logs/SplashScreen';
 import HomeScreen from '../Screens/HomeScreen';
 import Favourites from '../Screens/Favourites';
 import Explore from '../Screens/Explore';
@@ -14,10 +14,23 @@ import Checkout from '../Screens/Checkout';
 const BottomNavigation = () => {
   const Tab = createBottomTabNavigator();
 
+  const [showSplashScreen, setShowSplashScreen] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowSplashScreen(false);
+    }, 1500);
+  }, []);
   return (
-    <Tab.Navigator
-    //  initialRouteName={Account}
-    >
+    <Tab.Navigator>
+        {showSplashScreen ? (
+          <Tab.Screen
+            name="Splash"
+            screenOptions={{tabBarIconStyle: { display: "none" }}}
+            component={SplashScreen}
+            options={{headerShown: false}}
+          />
+        ) : null}
       <Tab.Screen
         name="Home"
         component={HomeScreen}

@@ -11,6 +11,7 @@ import Promo from '../Screens/Account/Promo'
 import Delivery from '../Screens/Account/Delivery'
 import Notification from '../Screens/Account/Notification'
 import Help from '../Screens/Account/Help'
+import UserPage from '../Screens/Account/UserPage'
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ const AccountStack = () => {
     <Stack.Screen name="Delivery" component={Delivery} />
     <Stack.Screen name="Notification" component={Notification} />
     <Stack.Screen name="Help" component={Help} />
+    <Stack.Screen name="UserPage" component={UserPage} />
   </Stack.Navigator>
   )
 }
