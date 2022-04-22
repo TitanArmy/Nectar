@@ -10,8 +10,8 @@ const Favourites = () => {
       <Text style={{fontWeight:'bold',fontSize:25,color:'#000'}}>Favourites</Text>
       </View>
      <View style={{flexDirection:'row'}}>
-              <Image style={{justifyContent:'center',marginTop:40,marginLeft:20}} 
-              source={require('../Assets/pngfuel.png')}
+              <Image style={{justifyContent:'center',marginTop:40,marginLeft:10}} 
+              source={require('../Assets/pngfuel1.png')}
               />
               
               <View>
@@ -41,9 +41,9 @@ const Favourites = () => {
               </TouchableOpacity>
               
     </View>
-    <View style={{flexDirection:'row'}}>
-              <Image style={{justifyContent:'center',marginTop:40,marginLeft:19}} 
-              source={require('../Assets/pngfuel.png')}
+    <View style={{flexDirection:'row',right:8}}>
+              <Image style={{justifyContent:'center',marginTop:40}} 
+              source={require('../Assets/pngfuel3.png')}
               />
               
               <View>
@@ -58,8 +58,8 @@ const Favourites = () => {
               
     </View>
     <View style={{flexDirection:'row'}}>
-              <Image style={{justifyContent:'center',marginTop:40,marginLeft:20}} 
-              source={require('../Assets/pngfuel.png')}
+              <Image style={{justifyContent:'center',marginTop:40,marginLeft:20,}} 
+              source={require('../Assets/pngfuel6.png')}
               />
               
               <View>
@@ -75,7 +75,7 @@ const Favourites = () => {
     </View>
     <View style={{flexDirection:'row'}}>
               <Image style={{justifyContent:'center',marginTop:40,marginLeft:20}} 
-              source={require('../Assets/pngfuel.png')}
+              source={require('../Assets/pngfuel7.png')}
               />
               
               <View>

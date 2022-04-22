@@ -93,7 +93,7 @@ const Cart = ({navigation}) => {
    
     <TouchableOpacity 
       style={{justifyContent:'flex-end',alignItems:'center',marginTop:60,padding:20,backgroundColor:'#53B175',borderRadius:15,marginLeft:20,marginRight:20,flexDirection:'row'}} 
-      onPress={()=>{navigation.navigate('OrderAccepted')}} 
+      onPress={()=>{navigation.navigate('ErrorScreen')}} 
 
     >
                 

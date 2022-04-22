@@ -4,12 +4,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import CartNavigation from './CartNavigation';
+import AccountStack from './AccountStack';
 
 import HomeScreen from '../Screens/HomeScreen';
 import Favourites from '../Screens/Favourites';
 import Explore from '../Screens/Explore';
-import Cart from '../Screens/Cart';
-import Account from '../Screens/Account';
 import Checkout from '../Screens/Checkout';
 
 const BottomNavigation = () => {
@@ -24,6 +23,8 @@ const BottomNavigation = () => {
         component={HomeScreen}
         options={{
           headerShown: false,
+          activeTintColor: 'red',
+          inactiveTintColor: "red",
           tabBarIcon: ({focused}) => (
             <Image
               source={
@@ -85,7 +86,7 @@ const BottomNavigation = () => {
       />
       <Tab.Screen
         name="Account"
-        component={Account}
+        component={AccountStack}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (

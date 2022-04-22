@@ -2,12 +2,12 @@ import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import React from 'react'
 // import {  } from 'react-native-gesture-handler'
 
-const Account = () => {
+const Account = ({navigation}) => {
   return (
     <View style={styles.container}>
       
       {/* USER INFO */}
-      <View style={{flexDirection:'row',alignItems:'center',marginHorizontal:20,marginVertical:50}}>
+      <View style={{flexDirection:'row',alignItems:'center',marginHorizontal:10,marginVertical:27}}>
 
         {/* UserIMG */}
         <View 
@@ -43,10 +43,10 @@ const Account = () => {
           <Image
             source={require('../Assets/Orders.png')}
           />
-          <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Orders</Text>
+          <Text style={{fontWeight:'500',color:'#000',marginLeft:9}}>Orders</Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
-        <Image
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Orders')}}>
+        <Image style={{marginRight:5}}
           source={require('../Assets/rightArrow.png')}
         />
         </TouchableOpacity>
@@ -61,7 +61,7 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>MY Details</Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Mydetails')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -77,7 +77,7 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}> Delivery Address</Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Delivery')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -93,7 +93,7 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}> Payment Methods </Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Payment')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -109,7 +109,7 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Promo Card</Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Promo')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -125,7 +125,7 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Notifications </Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Notification')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -141,7 +141,7 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Help</Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('Help')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -157,7 +157,9 @@ const Account = () => {
           />
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>About</Text>
         </View>
-        <TouchableOpacity onPress={()=>alert('YOUR ORDERS')}>
+        <TouchableOpacity
+         onPress={()=>{navigation.navigate('About')}}
+        >
         <Image
           source={require('../Assets/rightArrow.png')}
         />

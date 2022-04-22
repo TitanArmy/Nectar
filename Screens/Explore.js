@@ -138,7 +138,7 @@ const Explore = () => {
     <View >
       <Text style={{textAlign:'center', fontSize:30, color:'#181725',marginTop: 15,fontWeight:'bold'}}>Find Product</Text>
       
-      <View style={{ backgroundColor:'#f3f2f3',overflow:'hidden',marginTop:13,alignItems:'center',flexDirection:'row',height: 59,width:'95%',borderRadius:10,marginHorizontal:10,marginVertical:20}}>
+      <View style={{ backgroundColor:'#f3f2f3',overflow:'hidden',marginTop:13,alignItems:'center',flexDirection:'row',height: 59,width:'95%',borderRadius:10,marginHorizontal:10}}>
       <Image
         style={{justifyContent:'center',alignItems:'center',marginHorizontal:10,}}
         source={require('../Assets/search.png')}

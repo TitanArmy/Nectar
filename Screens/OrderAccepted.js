@@ -1,7 +1,8 @@
 import { View, Text,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 
-const OrderAccepted = () => {
+const OrderAccepted = ({navigation}) => {
   return (
     <View style={{backgroundColor:'#fff'}}>
      <Image
@@ -28,7 +29,9 @@ const OrderAccepted = () => {
      </View>
 <View>
 
-     <TouchableOpacity style={{backgroundColor: '#53B175',alignItems:'center',bottom:390,marginHorizontal:25,borderRadius:10,padding:13}}>
+     <TouchableOpacity style={{backgroundColor: '#53B175',alignItems:'center',bottom:390,marginHorizontal:25,borderRadius:10,padding:13}}
+     onPress={()=>{navigation.navigate('ErrorScreen')}}
+     >
         
         <Text style={{color:'#FFF9FF',fontWeight:'bold',fontSize:18,textAlign:'center'}}>
             Track Order
@@ -36,7 +39,9 @@ const OrderAccepted = () => {
         </TouchableOpacity>
         
 </View>
-        <TouchableOpacity style={{justifyContent:'center',alignItems:'center'}}>
+        <TouchableOpacity style={{justifyContent:'center',alignItems:'center'}}
+         onPress={()=>{navigation.navigate('Home')}}
+        >
         <Text style={{bottom:373,color:'#181725',fontWeight:'bold',fontSize:20}}>
             Back To Home
         </Text>
