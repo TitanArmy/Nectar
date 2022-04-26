@@ -1,7 +1,7 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
-
+apply plugin: 'com.google.gms.google-services'
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -77,6 +77,10 @@ import com.android.build.OutputFile
  * ]
  */
 
+dependencies {
+  // ...
+  implementation project(path: ":@react-native-firebase_auth")
+}
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]

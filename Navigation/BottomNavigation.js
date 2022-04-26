@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import CartNavigation from './CartNavigation';
 import AccountStack from './AccountStack';
-import SplashScreen from '../Screens/Logs/SplashScreen';
+
 import HomeScreen from '../Screens/HomeScreen';
 import Favourites from '../Screens/Favourites';
 import Explore from '../Screens/Explore';
@@ -14,23 +14,12 @@ import Checkout from '../Screens/Checkout';
 const BottomNavigation = () => {
   const Tab = createBottomTabNavigator();
 
-  const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowSplashScreen(false);
-    }, 1500);
-  }, []);
+
+
   return (
     <Tab.Navigator>
-        {showSplashScreen ? (
-          <Tab.Screen
-            name="Splash"
-            screenOptions={{tabBarIconStyle: { display: "none" }}}
-            component={SplashScreen}
-            options={{headerShown: false}}
-          />
-        ) : null}
+        
       <Tab.Screen
         name="Home"
         component={HomeScreen}

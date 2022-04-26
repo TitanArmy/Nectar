@@ -5,12 +5,13 @@ import Beverages from './Screens/Beverages';
 import Checkout from './Screens/Checkout';
 import {NavigationContainer} from '@react-navigation/native';
 import BottomNavigation from './Navigation/BottomNavigation';
+import StackNavigation from './Navigation/StackNavigation'
 
 const App = () => {
   return (
     // <Checkout/>
     <NavigationContainer>
-      <BottomNavigation />
+       <StackNavigation/>
     </NavigationContainer>
   );
 };
