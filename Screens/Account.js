@@ -64,7 +64,7 @@ const Account = ({navigation}) => {
             source={require('../Assets/MyDetails.png')}
           />
           <TouchableOpacity onPress={()=>{navigation.navigate('Mydetails')}}> 
-          <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>MY Details</Text>
+          <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Buy Again</Text>
           </TouchableOpacity>
         </View>
         <TouchableOpacity  onPress={()=>{navigation.navigate('Mydetails')}}>
@@ -135,11 +135,11 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/Bell.png')}
           />
-          <TouchableOpacity onPress={()=>{navigation.navigate('Notification')}}>
+          <TouchableOpacity onPress={()=>{navigation.navigate('NotificationServices')}}>
           <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Notifications </Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity  onPress={()=>{navigation.navigate('Notification')}}>
+        <TouchableOpacity  onPress={()=>{navigation.navigate('NotificationServices')}}>
         <Image
           source={require('../Assets/rightArrow.png')}
         />
@@ -171,12 +171,12 @@ const Account = ({navigation}) => {
           <Image
             source={require('../Assets/about.png')}
           />
-          <TouchableOpacity onPress={()=>{navigation.navigate('About')}}>
-          <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>About</Text>
+          <TouchableOpacity onPress={()=>{navigation.navigate('Admin')}}>
+          <Text style={{fontWeight:'500',color:'#000',marginLeft:10}}>Admin</Text>
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-         onPress={()=>{navigation.navigate('About')}}
+         onPress={()=>{navigation.navigate('Admin')}}
         >
         <Image
           source={require('../Assets/rightArrow.png')}
@@ -185,7 +185,7 @@ const Account = ({navigation}) => {
       </View>
 
       <TouchableOpacity
-      onPress={()=>alert('Logged Out')} 
+      onPress={()=>{navigation.replace('Login')}} 
       style={{backgroundColor:'#f2f3f2',flexDirection:'row',alignItems:'center',paddingVertical:20,marginVertical:40,marginHorizontal:30,paddingHorizontal:10,borderRadius:10}}>
         <Image
           source={require('../Assets/LogOut.png')}

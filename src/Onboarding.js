@@ -4,6 +4,7 @@ import {
   View,
   ImageBackground,
   Text,
+  Image,
   Button,
   TouchableOpacity,
   StyleSheet,
@@ -13,16 +14,34 @@ import {
 const OnBoarding = ({navigation}) => {
   return (
     <View style={styles.container}>
+     
       <ImageBackground
         source={require('../Assets/background.png')}
         style={styles.image}>
-       
-        <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+              <Image source={(require('../Assets/carrot.png'))}
+              style={{alignSelf:'center',top:380,left:20}}/>
+      <View style={{alignItems:'center',justifyContent:'center',position:'absolute',left:90,top:440}}>
+  
+       <Text style={{fontSize:40,fontWeight:"bold",color:'#fff'}}>Welcome</Text>
+       <Text style={{fontSize:40,fontWeight:"bold",color:'#fff'}}>To Our Store</Text>
+      </View>
+      <View style={{alignItems:'center',justifyContent:'center',position:'absolute',left:75,top:562}}>
+      <Text style={{fontSize:14,color:'#FCFCFC'}}>Get Your Groceries in as fast as one hour</Text>
+      </View>
+        <TouchableOpacity onPress={() => navigation.navigate('BottomNavigation')}>
           
           <Text style={styles.text}>Get Started</Text>
         </TouchableOpacity>
       </ImageBackground>
+
     </View>
+// {/* <View>
+//   <Image source={require('../Assets/background.png')}
+//    style={styles.image}></Image>
+
+//    <TouchableOpacity style={{backgroundColor: '#53B175',alignItems:'center',bottom:390,marginHorizontal:25,borderRadius:10,padding:13}}>
+//    </TouchableOpacity>
+// </View> */}
   );
 };
 
@@ -44,7 +63,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     alignItems:'center',
-    marginTop: 550,
+    marginTop: 570,
     padding:20,
     backgroundColor: '#53B175',
     borderRadius:40,

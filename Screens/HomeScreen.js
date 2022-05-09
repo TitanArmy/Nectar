@@ -3,8 +3,12 @@ import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import Carousel from '../Components/Carousel'
 import { dummyData } from '../data/Data'
+import { NavigationContainer } from '@react-navigation/native'
+import Exclusive from '../Components/Exclusive'
+import BestSellingCrousel from '../Components/BestSellingCrousel'
+import BehindGroceries from '../Components/BehindGroceries'
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <ScrollView>
 
@@ -43,7 +47,7 @@ const HomeScreen = () => {
       {/* CROUSEL */}
       <View 
       style={{borderWidth:1,borderRadius:10,marginHorizontal:10}}>
-      <Carousel />
+      <Carousel navigation={navigation}/>
         {/* <Image
         source={require('../Assets/banner.png')}/> */}
       </View>
@@ -59,66 +63,14 @@ const HomeScreen = () => {
       {/* ITEM EXCLUSIVE OFFER */}
       <View style={styles.item1}>
           {/* CARD1111111111111111111111 */}
-          <View style={styles.itemCard1}>
-            <View 
-            style={styles.itemCardImg}
-            >
-              <Image
-                  source={require('../Assets/pngfuel.png')}
-              />
-            </View>
-            
-              <View style={styles.itemCardDes}>
-              <Text style={styles.itemCardHead}>Diet Coke</Text>
-              <Text>355ml, Price</Text>
-              </View>
-            
-
-            <View style={styles.itemPriceView}>
-            <Text style={styles.itemPrice}>$1.99</Text>
-              <TouchableOpacity style={styles.itemQtyBtn}>
-                  <Image
-                      source={require('../Assets/plusWhite.png')}
-                  />
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* CARD 2222222222222222222222222 */}
-          
-          <View style={styles.itemCard1}>
-            <View 
-            style={styles.itemCardImg}
-            >
-              <Image
-                  source={require('../Assets/pngfuel1.png')}
-              />
-            </View>
-            
-              <View style={styles.itemCardDes}>
-              <Text style={styles.itemCardHead}>Diet Coke</Text>
-              <Text>355ml, Price</Text>
-              </View>
-            
-
-            <View style={styles.itemPriceView}>
-            <Text style={styles.itemPrice}>$1.99</Text>
-              <TouchableOpacity style={styles.itemQtyBtn}>
-                  <Image
-                      source={require('../Assets/plusWhite.png')}
-                  />
-              </TouchableOpacity>
-            </View>
-          </View>
+         <Exclusive navigation={navigation}/>
         
       
       </View>
 
       {/* Best Selling */}
       <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:15,marginVertical:20,alignItems:'center'}}>
-        <Text style={{fontSize:20,fontWeight:'bold',color:'#000'}}>Best Selling</Text>
-        <TouchableOpacity onPress={()=>{alert(' Best Selling ')}}>
-        <Text style={{color:'#53B175'}}>See all</Text>
-        </TouchableOpacity>
+        <BestSellingCrousel navigation={navigation}/>
       </View>
 
       {/* ITEM BEST SELLING  */}
@@ -209,59 +161,7 @@ const HomeScreen = () => {
 
     {/* ITEM AFTER GROCERIES  */}
     <View style={styles.item1}>
-          {/* CARD1111111111111111111111 */}
-          <View style={styles.itemCard1}>
-            <View 
-            style={styles.itemCardImg}
-            >
-              <Image
-                  source={require('../Assets/pngfuel.png')}
-              />
-            </View>
-            
-              <View style={styles.itemCardDes}>
-              <Text style={styles.itemCardHead}>Diet Coke</Text>
-              <Text>355ml, Price</Text>
-              </View>
-            
-
-            <View style={styles.itemPriceView}>
-            <Text style={styles.itemPrice}>$1.99</Text>
-              <TouchableOpacity style={styles.itemQtyBtn}>
-                  <Image
-                      source={require('../Assets/plusWhite.png')}
-                  />
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* CARD 2222222222222222222222222 */}
-          
-          <View style={styles.itemCard1}>
-            <View 
-            style={styles.itemCardImg}
-            >
-              <Image
-                  source={require('../Assets/pngfuel1.png')}
-              />
-            </View>
-            
-              <View style={styles.itemCardDes}>
-              <Text style={styles.itemCardHead}>Diet Coke</Text>
-              <Text>355ml, Price</Text>
-              </View>
-            
-
-            <View style={styles.itemPriceView}>
-            <Text style={styles.itemPrice}>$1.99</Text>
-              <TouchableOpacity style={styles.itemQtyBtn}>
-                  <Image
-                      source={require('../Assets/plusWhite.png')}
-                  />
-              </TouchableOpacity>
-            </View>
-          </View>
-        
-      
+         <BehindGroceries navigation={navigation}/>
       </View>
 
 

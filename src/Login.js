@@ -40,7 +40,7 @@ const Loging = ({navigation}) => {
               .then((user) => {
                 console.log(user);
                 // If server response message same as Data Matched
-                if (user) navigation.replace("Signup");
+                if (user) navigation.replace("BottomNavigation");
               })
               .catch((error) => {
                 // console.log(error);

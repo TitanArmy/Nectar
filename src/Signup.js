@@ -57,7 +57,7 @@ const Signup = ({navigation}) => {
         onChangeText={pass => setPass(pass)}
       />
       <TouchableOpacity
-      onPress={() => navigation.navigate('BottomNavigation')}
+      onPress={() => navigation.navigate('OtpScreen')}
       style={styles.button}>
         <Text style={styles.buttonText}>Sign-Up</Text>
       </TouchableOpacity>

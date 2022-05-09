@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import { View, Text, Alert, StyleSheet, TouchableOpacity,Button } from 'react-native'
+import { View, Text, Alert, StyleSheet, TouchableOpacity,Button,Image } from 'react-native'
 import { TextInput } from 'react-native-paper';
 import PhoneInput from 'react-native-phone-number-input';
 import LinearGradient from 'react-native-linear-gradient';

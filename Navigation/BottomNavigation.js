@@ -5,11 +5,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import CartNavigation from './CartNavigation';
 import AccountStack from './AccountStack';
-
-import HomeScreen from '../Screens/HomeScreen';
+import HomeStack from './HomeStackNav';
 import Favourites from '../Screens/Favourites';
 import Explore from '../Screens/Explore';
 import Checkout from '../Screens/Checkout';
+import HomeStackNav from './HomeStackNav';
 
 const BottomNavigation = () => {
   const Tab = createBottomTabNavigator();
@@ -21,8 +21,8 @@ const BottomNavigation = () => {
     <Tab.Navigator>
         
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Homes"
+        component={HomeStackNav}
         options={{
           headerShown: false,
           activeTintColor: 'red',
@@ -59,14 +59,17 @@ const BottomNavigation = () => {
         component={CartNavigation}
         options={{
           headerShown: false,
+          tabBarBadge:1,
           tabBarIcon: ({focused}) => (
               <Image
                 source={
                   focused
                     ? require('../Assets/cartA.png')
                     : require('../Assets/cart.png')
+                    
                 }
               />
+              
             ),
         }}
       />

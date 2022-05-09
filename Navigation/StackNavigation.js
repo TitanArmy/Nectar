@@ -1,97 +1,118 @@
 import Signin from '../src/Signin';
 import React, {useState, useEffect} from 'react';
-import { NavigationContainer } from "@react-navigation/native";
+import {NavigationContainer} from '@react-navigation/native';
 import OtpScreen from '../src/OtpScreen';
-import Location from '../src/Location'
-import OnBoarding  from '../src/Onboarding'
-import Map from '../src/Map'
-import Login from '../src/Login'
-import Signup  from '../src/Signup'
-import Dashboard from '../src/Dashboard'
-import Forgotpass from '../src/Forgotpass'
+import Location from '../src/Location';
+import OnBoarding from '../src/Onboarding';
+import Map from '../src/Map';
+import Login from '../src/Login';
+import Signup from '../src/Signup';
+import Dashboard from '../src/Dashboard';
+import Forgotpass from '../src/Forgotpass';
 import BottomNavigation from './BottomNavigation';
 import SplashScreen from '../Screens/Logs/SplashScreen';
+import ProductDetail from '../Screens/ProductDetail';
+
 
 const Stack = createNativeStackNavigator();
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-
-
-
 import {View, Text, StyleSheet} from 'react-native';
-
+import Social from '../src/Social';
 
 // create a component
 const MyComponent = () => {
+  const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-    const [showSplashScreen, setShowSplashScreen] = useState(true);
-
-    useEffect(() => {
-      setTimeout(() => {
-        setShowSplashScreen(false);
-      }, 1500);
-    }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowSplashScreen(false);
+    }, 1500);
+  }, []);
   return (
-   
-      <Stack.Navigator>
-    {showSplashScreen ? (
-          <Stack.Screen
-            name="Splash"
-            screenOptions={{tabBarIconStyle: { display: "none" }}}
-            component={SplashScreen}
-            options={{headerShown: false}}
-            />
-            ) : null}
+    <Stack.Navigator>
+      {showSplashScreen ? (
+        <Stack.Screen
+          name="Splash"
+          screenOptions={{tabBarIconStyle: {display: 'none'}}}
+          component={SplashScreen}
+          options={{headerShown: false}}
+        />
+      ) : null}
+
 
       <Stack.Screen
-          name="OnBoarding"
-           initialRouteName={OnBoarding}
-          component={OnBoarding}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Signin"
-          initialRouteName={Signin}
-          component={Signin}
-        />
-          <Stack.Screen name='BottomNavigation' component={BottomNavigation}
-                      options={{
-                        headerShown:false,
-                      }}
-                    />
-        
-        <Stack.Screen name="OtpScreen"  component={OtpScreen} />
+        name="OnBoarding"
+        initialRouteName={OnBoarding}
+        component={OnBoarding}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+  name="BottomNavigation"
+  component={BottomNavigation}
+  options={{
+    headerShown: false,
+  }}
+/>
+      <Stack.Screen
+        name="Signin"
+        initialRouteName={Signin}
+        component={Signin}
+      />
 
+      <Stack.Screen 
+        name="OtpScreen" 
+        component={OtpScreen} />
 
-        <Stack.Screen name="Location"  component={Location} />
-      
-        <Stack.Screen name="Map" component={Map} /> 
+      <Stack.Screen 
+         name="Location" 
+         component={Location} />
 
-       
-        <Stack.Screen name="Login" options={{
-            headerShown: false,
-          }} component={Login} />
+      <Stack.Screen 
+        name="Map" 
+        component={Map} />
 
+      <Stack.Screen
+        name="Login"
+        options={{
+        headerShown: false,
+        }}
+        component={Login}
+      />
 
-        <Stack.Screen name="Signup" options={{
-            headerShown: false,
-          }} component={Signup} />
+      <Stack.Screen
+        name="Signup"
+        options={{
+          headerShown: false,
+        }}
+        component={Signup}
+      />
 
+      <Stack.Screen
+        name="Dashboard"
+        options={{
+          headerShown: false,
+        }}
+        component={Dashboard}
+      />
 
-
-        <Stack.Screen name="Dashboard" options={{
-            headerShown: false,
-          }} component={Dashboard} />
-
-
-<Stack.Screen name="Forgotpass" options={{
-            headerShown: false,
-          }} component={Forgotpass} /> 
-
-      </Stack.Navigator>
-    
+      <Stack.Screen
+        name="Forgotpass"
+        options={{
+          headerShown: false,
+        }}
+        component={Forgotpass}
+      />
+      <Stack.Screen
+        name="Social"
+        options={{
+          headerShown: false,
+        }}
+        component={Social}
+      />
+    </Stack.Navigator>
   );
 };
 
@@ -104,6 +125,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#bad4c7',
   },
 });
-
 
 export default MyComponent;
