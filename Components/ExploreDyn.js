@@ -22,35 +22,40 @@ const data = [
     pic: require('../Assets/vegi2.png'),
     name: 'Fresh Fruits & Vegitable',
     bgColor:'rgba(83, 177, 117, 0.1)',
-    bdrgColor: '#53B175'
+    bdrgColor: '#53B175',
+    screen : 'FruitsAndVeg',
   },
   {
     id: 2,
     pic: require('../Assets/drinks2.png'),
     name: 'Cooking Oil & Ghee',
     bgColor:'rgba(248, 164, 76, 0.1)',
-    bdrgColor: '#F8A44C'
+    bdrgColor: '#F8A44C',
+    screen : 'OilAndGhee',
   },
   {
     id: 3,
     pic: require('../Assets/chicken.png'),
     name: 'Meat & Fish',
     bgColor:'rgba(247, 165, 147, 0.25)',
-    bdrgColor: '#F7A593'
+    bdrgColor: '#F7A593',
+    screen : 'MeatAndFish',
   },
   {
     id: 4,
     pic: require('../Assets/cookies.png'),
     name: 'Bakery & Snacks',
     bgColor:'rgba(211, 176, 224, 0.25)',
-    bdrgColor:'#D3B0E0'
+    bdrgColor:'#D3B0E0',
+    screen : 'BakeryAndSnacks',
   },
   {
     id: 5,
     pic: require('../Assets/milk.png'),
     name: 'Dairy & Eggs',
     bgColor:'rgba(253, 229, 152, 0.25)',
-    bdrgColor: 'rgba(253, 229, 152, 1.00)'
+    bdrgColor: 'rgba(253, 229, 152, 1.00)',
+    screen : 'DiaryAndEgg',
   },
   {
     id: 6,
@@ -58,23 +63,25 @@ const data = [
     name: 'Beverages',
     bgColor:'rgba(183, 223, 245, 0.25)',
     bdrgColor: '#B7DFF5',
+    screen : 'Beverages',
   },
   {
     id: 7,
     pic: require('../Assets/milk.png'),
     name: 'milk',
     bgColor:'rgba(131, 106, 246, 0.15)',
-    bdrgColor: '#836AF6'
+    bdrgColor: '#836AF6',
+    screen : 'Milk',
   },
 ];
 
-const renderItem = ({item}) => {
+const renderItem = ({item},navigation) => {
 
   return (
     <View style={[styles.stuff,{backgroundColor:item.bgColor,borderColor:item.bdrgColor}]}>
       <TouchableOpacity
         onPress={() => {
-          alert('Want To Buy Fruits $ vegitable');
+         navigation.navigate(item.screen)
         }}>
         <View>
           <Image source={item.pic} style={styles.Img} />
@@ -88,7 +95,7 @@ const renderItem = ({item}) => {
   );
 };
 
-const ExploreDyn = () => {
+const ExploreDyn = ({navigation}) => {
   useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
 }, [])
@@ -98,7 +105,8 @@ const ExploreDyn = () => {
     <FlatList
       nestedScrollEnabled
       data={data}
-      renderItem={renderItem}
+      renderItem={item=>(renderItem(item,navigation))}
+
       numColumns={numCol}
       showsHorizontalScrollIndicator={false}
       

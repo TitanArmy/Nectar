@@ -49,6 +49,7 @@
     "react-native-vector-icons": "^9.1.0",
     "react-native-x-carousel": "^1.0.1",
     "react-scratch-coupon": "^1.0.7",
+    "redux": "^4.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

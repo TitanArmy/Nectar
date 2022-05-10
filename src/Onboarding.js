@@ -28,7 +28,7 @@ const OnBoarding = ({navigation}) => {
       <View style={{alignItems:'center',justifyContent:'center',position:'absolute',left:75,top:562}}>
       <Text style={{fontSize:14,color:'#FCFCFC'}}>Get Your Groceries in as fast as one hour</Text>
       </View>
-        <TouchableOpacity onPress={() => navigation.navigate('BottomNavigation')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
           
           <Text style={styles.text}>Get Started</Text>
         </TouchableOpacity>

@@ -18,18 +18,22 @@ const HomeScreen = ({navigation}) => {
       <View
        style={{marginTop:10}}
        >
+         <TouchableOpacity  onPress={()=>{navigation.navigate('Delivery')}}>
         <Image
           style={{marginHorizontal:180}}
           source={require('../Assets/Group.png')}
-        />    
+        /> 
+        </TouchableOpacity>   
       </View>
       
       {/* location */}
       <View>
+      <TouchableOpacity  onPress={()=>{navigation.navigate('Delivery')}}>
         <Image  
           style={{marginHorizontal:100}}
           source={require('../Assets/location.png')}
         />    
+      </TouchableOpacity>
       </View>
       
       {/* SearchBar */}

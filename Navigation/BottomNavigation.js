@@ -7,26 +7,20 @@ import CartNavigation from './CartNavigation';
 import AccountStack from './AccountStack';
 import HomeStack from './HomeStackNav';
 import Favourites from '../Screens/Favourites';
-import Explore from '../Screens/Explore';
-import Checkout from '../Screens/Checkout';
+import ExploreStack from './ExploreStack';
 import HomeStackNav from './HomeStackNav';
 
 const BottomNavigation = () => {
   const Tab = createBottomTabNavigator();
-
-
-
-
   return (
     <Tab.Navigator>
-        
       <Tab.Screen
         name="Homes"
         component={HomeStackNav}
         options={{
           headerShown: false,
           activeTintColor: 'red',
-          inactiveTintColor: "red",
+          inactiveTintColor: 'red',
           tabBarIcon: ({focused}) => (
             <Image
               source={
@@ -39,19 +33,19 @@ const BottomNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Explore"
-        component={Explore}
+        name="ExploreStack"
+        component={ExploreStack}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
-              <Image
-                source={
-                  focused
-                    ? require('../Assets/exploreA.png')
-                    : require('../Assets/explore.png')
-                }
-              />
-            ),
+            <Image
+              source={
+                focused
+                  ? require('../Assets/exploreA.png')
+                  : require('../Assets/explore.png')
+              }
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -59,18 +53,16 @@ const BottomNavigation = () => {
         component={CartNavigation}
         options={{
           headerShown: false,
-          tabBarBadge:1,
+          tabBarBadge: 5,
           tabBarIcon: ({focused}) => (
-              <Image
-                source={
-                  focused
-                    ? require('../Assets/cartA.png')
-                    : require('../Assets/cart.png')
-                    
-                }
-              />
-              
-            ),
+            <Image
+              source={
+                focused
+                  ? require('../Assets/cartA.png')
+                  : require('../Assets/cart.png')
+              }
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -79,14 +71,14 @@ const BottomNavigation = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
-              <Image
-                source={
-                  focused
-                    ? require('../Assets/favA.png')
-                    : require('../Assets/fav.png')
-                }
-              />
-            ),
+            <Image
+              source={
+                focused
+                  ? require('../Assets/favA.png')
+                  : require('../Assets/fav.png')
+              }
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -95,30 +87,14 @@ const BottomNavigation = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
-              <Image
-                source={
-                  focused
-                    ? require('../Assets/accountA.png')
-                    : require('../Assets/account.png')
-                }
-              />
-            ),
-        }}
-      />
-      <Tab.Screen
-        name="Checkout"
-        component={Checkout}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({focused}) => (
-              <Image
-                source={
-                  focused
-                    ? require('../Assets/accountA.png')
-                    : require('../Assets/account.png')
-                }
-              />
-            ),
+            <Image
+              source={
+                focused
+                  ? require('../Assets/accountA.png')
+                  : require('../Assets/account.png')
+              }
+            />
+          ),
         }}
       />
     </Tab.Navigator>

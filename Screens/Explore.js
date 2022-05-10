@@ -4,7 +4,7 @@ import React from 'react'
 // import { List, TextInput } from 'react-native-paper'
 import { ScrollView } from 'react-native-gesture-handler'
 import ExploreDyn from '../Components/ExploreDyn'
-const Explore = () => {
+const Explore = ({navigation}) => {
   return (
       <ScrollView>
         <Text style={{textAlign:'center', fontSize:30, color:'#181725',marginTop: 15,fontWeight:'bold'}}>Find Product</Text>
@@ -24,7 +24,7 @@ const Explore = () => {
       </View>
 
       <View>
-        <ExploreDyn/>
+        <ExploreDyn navigation={navigation}/>
       </View>
 
     </ScrollView>
