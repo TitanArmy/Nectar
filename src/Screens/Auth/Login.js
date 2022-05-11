@@ -65,7 +65,7 @@ const Loging = ({navigation}) => {
       <View style={styles.container}>
         <Image
           style={{marginTop: 10,height: 90, width: 75}}
-          source={require('../Assets/Group.png')}
+          source={require('../../Assets/Group.png')}
         />
       </View>
       <Text style={styles.text}>Login</Text>

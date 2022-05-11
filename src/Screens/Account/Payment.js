@@ -8,10 +8,10 @@ import {
   StatusBar,
 } from 'react-native';
 import { CreditCardInput } from "react-native-credit-card-input";
-import { Secret_key, STRIPE_PUBLISHABLE_KEY } from '../../keys';
+import { Secret_key, STRIPE_PUBLISHABLE_KEY } from '../../../keys';
 
 // create a component
-const CURRENCY = 'USD';
+const CURRENCY = 'INR';
 var CARD_TOKEN = null;
 
 

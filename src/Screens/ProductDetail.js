@@ -1,8 +1,14 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React,{useState} from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const ProductDetail = () => {
+
+
+function ProductDetail () {
+
+  let [count,setCount] = useState(0)
+
+
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -26,17 +32,28 @@ const ProductDetail = () => {
       {/* Rate */}
       <View style={styles.itemRateCard}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <TouchableOpacity onPress={()=>{
+
+            if (count > 1) {
+              setCount(count = count - 1);
+            }
+          }
+          }>
           <Image
             style={styles.minusImg}
             source={require('../Assets/minus.png')}
           />
+          </TouchableOpacity>
           <View style={styles.itemQty}>
-            <Text>1</Text>
+            <Text>{count}</Text>
           </View>
+          <TouchableOpacity onPress={()=>{setCount(count+1)}}
+          >
           <Image
             style={styles.plusImg}
             source={require('../Assets/plus.png')}
           />
+          </TouchableOpacity>
         </View>
         <Text style={styles.itemRate}>$4.99</Text>
       </View>

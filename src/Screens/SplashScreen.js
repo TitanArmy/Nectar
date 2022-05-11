@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
 import React from 'react';
 
-import Logo from '../../Assets/Splash.png';
+import Logo from '../Assets/Splash.png';
 
 export default function SplashScreen() {
   return (

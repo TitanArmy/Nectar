@@ -5,7 +5,7 @@ const Social = ({navigation}) => {
   return (
     <View style={{backgroundColor:'white'}}>
      <Image
-     source={(require('../Assets/mask.png'))}
+     source={(require('../../Assets/mask.png'))}
      />
      <Text style={{fontWeight:'bold',fontSize:26,color:'#030303'}}>
          Get Your Groceries 
@@ -14,7 +14,7 @@ const Social = ({navigation}) => {
        With Nectar
      </Text>
      <Image style={{alignSelf:'center',marginRight:300,top:45}}
-     source={(require('../Assets/flag.png'))}
+     source={(require('../../Assets/flag.png'))}
      />
     <View>
      <TouchableOpacity
@@ -22,7 +22,7 @@ const Social = ({navigation}) => {
      >
        
      <Image style={{marginLeft:300}}
-     source={(require('../Assets/Arrow.png'))}
+     source={(require('../../Assets/Arrow.png'))}
      />
      </TouchableOpacity>
      </View>

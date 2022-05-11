@@ -61,25 +61,3 @@ const Orders =()=>
 }
 
 export default Orders
-
-// const styles = StyleSheet.create({
-//   stuff: {
-//     borderRadius: 20,
-//     borderWidth: 1,
-//     // borderColor: '#53B175',
-//     marginVertical: 10,
-//     marginHorizontal:10,
-//     backgroundColor: data.bg,
-//     height: WIDTH / numCol,
-//     width:'45%',
-//     padding:10,
-//   },
-//   Img:{
-//     marginTop:10,
-//     height:'80%',
-//     width:'100%',
-//     justifyContent:'center',
-//     alignItems:'center',
-//     alignSelf:'center'
-//   },
-// });

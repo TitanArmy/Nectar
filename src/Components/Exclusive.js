@@ -33,6 +33,7 @@ import database from '@react-native-firebase/database';
 //   },
 // ];
 
+
 const renderItem = ({item}, navigation) => {
   // console.log(navigation)
   if (item.offer == 'ExclusiveOffer') {

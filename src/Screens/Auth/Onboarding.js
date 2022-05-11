@@ -16,9 +16,9 @@ const OnBoarding = ({navigation}) => {
     <View style={styles.container}>
      
       <ImageBackground
-        source={require('../Assets/background.png')}
+        source={require('../../Assets/background.png')}
         style={styles.image}>
-              <Image source={(require('../Assets/carrot.png'))}
+              <Image source={(require('../../Assets/carrot.png'))}
               style={{alignSelf:'center',top:380,left:20}}/>
       <View style={{alignItems:'center',justifyContent:'center',position:'absolute',left:90,top:440}}>
   
@@ -28,7 +28,7 @@ const OnBoarding = ({navigation}) => {
       <View style={{alignItems:'center',justifyContent:'center',position:'absolute',left:75,top:562}}>
       <Text style={{fontSize:14,color:'#FCFCFC'}}>Get Your Groceries in as fast as one hour</Text>
       </View>
-        <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+        <TouchableOpacity onPress={() => navigation.navigate('BottomNavigation')}>
           
           <Text style={styles.text}>Get Started</Text>
         </TouchableOpacity>

@@ -1,24 +1,24 @@
-import Signin from '../src/Signin';
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import OtpScreen from '../src/OtpScreen';
-import Location from '../src/Location';
-import OnBoarding from '../src/Onboarding';
-import Map from '../src/Map';
-import Login from '../src/Login';
-import Signup from '../src/Signup';
-import Dashboard from '../src/Dashboard';
-import Forgotpass from '../src/Forgotpass';
+import Signin from '../Screens/Auth/Signin';
+import OtpScreen from '../Screens/Auth/OtpScreen';
+import Location from '../Screens/Auth/Location';
+import OnBoarding from '../Screens/Auth/Onboarding';
+import Map from '../Screens/Auth/Map';
+import Login from '../Screens/Auth/Login';
+import Signup from '../Screens/Auth/Signup';
+import Dashboard from '../Screens/Auth/Dashboard';
+import Forgotpass from '../Screens/Auth/Forgotpass';
 import BottomNavigation from './BottomNavigation';
-import SplashScreen from '../Screens/Logs/SplashScreen';
+import SplashScreen from '../Screens/SplashScreen';
 import ProductDetail from '../Screens/ProductDetail';
+
+import {View, Text, StyleSheet} from 'react-native';
+import Social from '../Screens/Auth/Social';
 
 
 const Stack = createNativeStackNavigator();
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import {View, Text, StyleSheet} from 'react-native';
-import Social from '../src/Social';
 
 // create a component
 const MyComponent = () => {

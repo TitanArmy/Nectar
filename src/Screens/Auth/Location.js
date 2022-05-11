@@ -6,7 +6,7 @@ import { View,Image, Text,TouchableOpacity, StyleSheet,Button } from 'react-nati
 const Location = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <Image source={require('../Assets/illustration.png')} />
+            <Image source={require('../../Assets/illustration.png')} />
             <Text style={styles.text1}> Select Your Location</Text>
             <Text style={styles.text2}>Switch on your location to stay in tune with what's happening in your area</Text>
             {/* <Text style={{marginTop:70, color:'blue'}}>Tap Below to select Location</Text> */}
@@ -27,7 +27,7 @@ style={{
 onPress={()=> navigation.navigate("Map")}
 >
 
-<Image source={require('../Assets/Google.png')} resizeMode='contain' style={{height:90,width:100} }/>
+<Image source={require('../../Assets/Google.png')} resizeMode='contain' style={{height:90,width:100} }/>
 
 </TouchableOpacity>
 
