@@ -1,19 +1,29 @@
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
-import React from 'react';
-// import ProductDetail from './Screens/ProductDetail';
-// import Beverages from './Screens/Beverages';
-// import Checkout from './Screens/Checkout';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-// import BottomNavigation from './Navigation/BottomNavigation';
-// import StackNavigation from './Navigation/StackNavigation'
-import StackNavigation from './src/Navigation/StackNavigation'
+import StackNavigation from './src/Navigation/StackNavigation';
+import SplashScreen from 'react-native-splash-screen';
+import {Provider} from 'react-redux';
 
+import configureStore from './src/Screens/Store/index';
+
+
+const store = configureStore();
 const App = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 3000);
+  }, []);
+
+
+
   return (
-    // <Checkout/>
-    <NavigationContainer>
-       <StackNavigation/>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StackNavigation />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

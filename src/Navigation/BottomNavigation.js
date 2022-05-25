@@ -11,6 +11,7 @@ import ExploreStack from './ExploreStack';
 import HomeStackNav from './HomeStackNav';
 
 const BottomNavigation = () => {
+  let cartVal =7
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator>
@@ -53,7 +54,7 @@ const BottomNavigation = () => {
         component={CartNavigation}
         options={{
           headerShown: false,
-          tabBarBadge: 5,
+          tabBarBadge: cartVal,
           tabBarIcon: ({focused}) => (
             <Image
               source={

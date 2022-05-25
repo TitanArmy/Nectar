@@ -7,15 +7,18 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  LogBox
 } from 'react-native';
+
+import {LogBox} from "react-native";
+
+
 
 import database from '@react-native-firebase/database';
 
 
-  // const data = [
+// const data = [
   //   {
-  //     id: 1,
+    //     id: 1,
   //     pic: require('../Assets/BoilChicken.png'),
   //     name: 'Boiler Chicken',
   //     qty: '1kg',
@@ -38,46 +41,46 @@ import database from '@react-native-firebase/database';
   //     price: 1.339,
   //   },
   //   {
-  //     id: 4,
+    //     id: 4,
+    //     pic: require('../Assets/pngfuel.png'),
+    //     name: 'Diet Coke',
+    //     qty: '355ml',
+    //     price: 1.339,
+    //   },
+    //   {
+      //     id: 5,
   //     pic: require('../Assets/pngfuel.png'),
   //     name: 'Diet Coke',
   //     qty: '355ml',
   //     price: 1.339,
   //   },
   //   {
-  //     id: 5,
-  //     pic: require('../Assets/pngfuel.png'),
-  //     name: 'Diet Coke',
-  //     qty: '355ml',
-  //     price: 1.339,
-  //   },
-  //   {
-  //     id: 6,
-  //     pic: require('../Assets/pngfuel.png'),
-  //     name: 'Diet Coke',
-  //     qty: '355ml',
-  //     price: 1.339,
-  //   },
-  //   {
-  //     id: 7,
-  //     pic: require('../Assets/pngfuel.png'),
-  //     name: 'Diet Coke',
-  //     qty: '355ml',
-  //     price: 1.339,
-  //   },
-  // ];
-
-
-const numCol = 2;
-const WIDTH = Dimensions.get('window').width - 30;
-
-const renderItem = ({item}, navigation) => {
-  return (
-    // CARD1111111111111111111111
-    <View style={styles.itemCard1}>
+    //     id: 6,
+    //     pic: require('../Assets/pngfuel.png'),
+    //     name: 'Diet Coke',
+    //     qty: '355ml',
+    //     price: 1.339,
+    //   },
+    //   {
+      //     id: 7,
+      //     pic: require('../Assets/pngfuel.png'),
+      //     name: 'Diet Coke',
+      //     qty: '355ml',
+      //     price: 1.339,
+      //   },
+      // ];
+      
+      
+      const numCol = 2;
+      const WIDTH = Dimensions.get('window').width - 30;
+      
+      const renderItem = ({item}, navigation) => {
+        return (
+          // CARD1111111111111111111111
+          <View style={styles.itemCard1}>
       <TouchableOpacity
       onPress={() => {
-            navigation.navigate('ProductDetail', {
+        navigation.navigate('ProductDetail', {
               Img:item.Img,
               title: item.title,
               category: item.category,
@@ -87,7 +90,7 @@ const renderItem = ({item}, navigation) => {
               offer: item.offer,
             });
           }}
-      >
+          >
         <View style={styles.itemCardImg}>
         <Image 
         style={{ height:100,width:100,}}
@@ -114,7 +117,10 @@ const renderItem = ({item}, navigation) => {
 
 const BehindGroceries = ({navigation}) => {
 
-
+  LogBox.ignoreLogs([
+    "VirtualizedLists should never be nested inside"
+  ])
+  
   const [data, setData] = useState([])
 
     useEffect(() => {

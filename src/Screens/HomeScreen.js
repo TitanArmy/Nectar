@@ -1,16 +1,21 @@
 import { StyleSheet, Text, View,Image,TextInput, TouchableOpacity} from 'react-native'
 import React from 'react'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-virtualized-view';
 import Carousel from '../Components/Carousel'
 import { dummyData } from '../data/Data'
 import { NavigationContainer } from '@react-navigation/native'
 import Exclusive from '../Components/Exclusive'
 import BestSellingCrousel from '../Components/BestSellingCrousel'
 import BehindGroceries from '../Components/BehindGroceries'
+import {LogBox} from "react-native";
 
 const HomeScreen = ({navigation}) => {
+
+  LogBox.ignoreLogs([
+    "VirtualizedLists should never be nested inside"
+    ])
   return (
-    <ScrollView>
+    <ScrollView> 
 
     <View style={styles.container}>
       
@@ -59,7 +64,8 @@ const HomeScreen = ({navigation}) => {
       {/* EXCLUSIVE OFFER */}
       <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:15,marginVertical:20,alignItems:'center'}}>
         <Text style={{fontSize:20,fontWeight:'bold',color:'#000'}}>Exclusive Offer</Text>
-        <TouchableOpacity onPress={()=>{alert(' EXCLUSIVE OFFER ')}}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Seeall')}}
+        >
         <Text style={{color:'#53B175'}}>See all</Text>
         </TouchableOpacity>
       </View>

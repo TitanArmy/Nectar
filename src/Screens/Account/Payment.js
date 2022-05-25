@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,11 @@ import {
 } from 'react-native';
 import { CreditCardInput } from "react-native-credit-card-input";
 import { Secret_key, STRIPE_PUBLISHABLE_KEY } from '../../../keys';
+import {LogBox} from "react-native";
+
+
+
+
 
 // create a component
 const CURRENCY = 'INR';
@@ -16,9 +21,12 @@ var CARD_TOKEN = null;
 
 
 
-function getCreditCardToken(creditCardData){
+function getCreditCardToken(creditCardData){  
   // alert()
   const card = {
+
+    //create property for getcreditcardtokendata
+
     'card[number]': creditCardData.values.number.replace(/ /g, ''),
     'card[exp_month]': creditCardData.values.expiry.split('/')[0],
     'card[exp_year]': creditCardData.values.expiry.split('/')[1],
@@ -61,6 +69,14 @@ function getCreditCardToken(creditCardData){
 };
 
 const StripeGateway = () => {
+  
+    LogBox.ignoreLogs([
+      "ViewPropTypes will be removed",
+      "ColorPropType will be removed",
+      ])
+      LogBox.ignoreLogs([
+        "componentWillReceiveProps has been renamed",
+        ])
 
 
   const [CardInput, setCardInput] = React.useState({})

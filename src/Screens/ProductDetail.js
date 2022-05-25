@@ -1,13 +1,30 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React,{useState} from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-virtualized-view';
+import { useDispatch, useSelector } from "react-redux";
+import { Provider } from 'react-native-paper';
+import {increment,DECREMENT_COUNT, decrement} from '../Screens/Store/actions/counters.'
+import { Button } from 'react-native-paper';
+import counter from './Store/reducers/countReducer';
+import {Pricecounter} from '../Screens/Store/reducers/Pricecounter'
+import { addGroceryItem, addToCart } from './Store/actions/grocery';
+import { ADD_TO_CART } from './Store/actions/types';
+import Cart from './Cart';
+import {addGroceryItems} from '../Screens/Store/actions/grocery'
+import { removeGroceryItem } from './Store/actions/grocery';
 
 
+const ProductDetail= props=> {
 
-function ProductDetail () {
+  const dispatch = useDispatch();
 
-  let [count,setCount] = useState(0)
+  const counter = useSelector(state => state.countReducer);
+  const Pricecounters = useSelector(state => state.Pricecounter);
+  const addGroceryItems = useSelector(state => state.groceryState)
+  const removeGroceryItem = useSelector(state => state.groceryState)
+  const {price, title,Img,qty}= props.route.params;
 
+  // console.log("hjedhewhdede" ,addGroceryItems.groceryItems)
 
   return (
     <ScrollView>
@@ -31,32 +48,19 @@ function ProductDetail () {
 
       {/* Rate */}
       <View style={styles.itemRateCard}>
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <TouchableOpacity onPress={()=>{
-
-            if (count > 1) {
-              setCount(count = count - 1);
-            }
-          }
-          }>
-          <Image
-            style={styles.minusImg}
-            source={require('../Assets/minus.png')}
-          />
-          </TouchableOpacity>
-          <View style={styles.itemQty}>
-            <Text>{count}</Text>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <TouchableOpacity onPress= {()=>dispatch(decrement())}>
+           <Image source={require('../Assets/minus.png')} />
+            </TouchableOpacity>
+            <Text style={{marginLeft:10,bottom:7}}>{counter.count}</Text>
+            <TouchableOpacity onPress= {()=>dispatch(increment())}>
+           <Image 
+           style={{marginLeft:8,bottom:7}}
+           source={require('../Assets/plus.png')} />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={()=>{setCount(count+1)}}
-          >
-          <Image
-            style={styles.plusImg}
-            source={require('../Assets/plus.png')}
-          />
-          </TouchableOpacity>
+          <Text style={styles.itemRate}> ₹{price*(counter.count)}</Text>
         </View>
-        <Text style={styles.itemRate}>$4.99</Text>
-      </View>
 
       {/* Item Detail */}
       <View style={styles.itemDetailCard}>
@@ -91,7 +95,12 @@ function ProductDetail () {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.basketBtn}>
+      <TouchableOpacity style={styles.basketBtn} onPress={()=>dispatch(addGroceryItem({
+        Img:Img,
+        title:title,
+        qty:qty,
+        price:price
+      }))}>
         <Text style={styles.basketBtnTxt}>Add To Basket</Text>
       </TouchableOpacity>
     </View>

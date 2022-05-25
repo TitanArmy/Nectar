@@ -22,23 +22,25 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // create a component
 const MyComponent = () => {
-  const [showSplashScreen, setShowSplashScreen] = useState(true);
+  // const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowSplashScreen(false);
-    }, 1500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowSplashScreen(false);
+  //   }, 1500);
+  // }, []);
   return (
+
+    
     <Stack.Navigator>
-      {showSplashScreen ? (
+      {/* {showSplashScreen ? (
         <Stack.Screen
           name="Splash"
           screenOptions={{tabBarIconStyle: {display: 'none'}}}
           component={SplashScreen}
           options={{headerShown: false}}
         />
-      ) : null}
+      ) : null} */}
 
 
       <Stack.Screen

@@ -7,6 +7,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import Carousel, { PaginationLight } from 'react-native-x-carousel';
 
+import {LogBox} from "react-native";
+
+
 const { width } = Dimensions.get('window');
 
 const DATA = [
@@ -15,28 +18,36 @@ const DATA = [
     coverImageUri: require('../Assets/vanner.png'),
     cornerLabelColor: '#FFD300',
     cornerLabelText: 'GOTY',
+    screen:'BakeryAndSnacks'
   },
   {
     id:2,
     coverImageUri: require('../Assets/vanner.png'),
     cornerLabelColor: '#0080ff',
     cornerLabelText: 'NEW',
+    screen:'Beverages'
   },
   {
     id:3,
     coverImageUri: require('../Assets/vanner.png'),
     cornerLabelColor: '#2ECC40',
     cornerLabelText: '-75%',
+    screen:'DiaryAndEgg'
   },
   {
     id:4,
     coverImageUri: require('../Assets/vanner.png'),
     cornerLabelColor: '#2ECC40',
     cornerLabelText: '-20%',
+    screen:'FruitsAndVeg'
   },
 ];
 
 const App = ({navigation}) => {
+  
+  LogBox.ignoreLogs([
+    "VirtualizedLists should never be nested inside"
+  ])
   const renderItem = data => (
     <View
       key={data.id}
@@ -45,7 +56,7 @@ const App = ({navigation}) => {
       <View
         style={styles.cardWrapper}
       >
-       <TouchableOpacity onPress={()=>{navigation.navigate('MyCart', {DATA:DATA})}}>
+       <TouchableOpacity onPress={()=>{navigation.navigate(data.screen, {DATA:DATA})}}>
        <Image
           style={styles.card}
           source={data.coverImageUri}

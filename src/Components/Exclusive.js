@@ -8,13 +8,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import database from '@react-native-firebase/database';
+import {LogBox} from "react-native";
+
 
 // const data = [
-//   {
-//     id: 1,
-//     pic: require('../Assets/pngfuel.png'),
-//     name: 'Diet Coke',
-//     qty: '355ml',
+  //   {
+    //     id: 1,
+    //     pic: require('../Assets/pngfuel.png'),
+    //     name: 'Diet Coke',
+    //     qty: '355ml',
 //     price: 1.89,
 //   },
 //   {
@@ -25,8 +27,8 @@ import database from '@react-native-firebase/database';
 //     price: 1.99,
 //   },
 //   {
-//     id: 3,
-//     pic: require('../Assets/pngfuel1.png'),
+  //     id: 3,
+  //     pic: require('../Assets/pngfuel1.png'),
 //     name: 'Diet Coke',
 //     qty: '355ml',
 //     price: 1.99,
@@ -76,6 +78,10 @@ const renderItem = ({item}, navigation) => {
 };
 
 const ExclusiveCrousel = ({navigation}) => {
+  
+  LogBox.ignoreLogs([
+    "VirtualizedLists should never be nested inside"
+  ])
   const [data, setData] = useState([]);
 
   useEffect(() => {

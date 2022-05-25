@@ -2,7 +2,7 @@
 import { View, Text,Image,TouchableOpacity,SafeAreaView ,TextInput,FlatList} from 'react-native'
 import React from 'react'
 // import { List, TextInput } from 'react-native-paper'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-virtualized-view';
 import ExploreDyn from '../Components/ExploreDyn'
 const Explore = ({navigation}) => {
   return (

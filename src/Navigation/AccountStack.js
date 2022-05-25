@@ -13,6 +13,7 @@ import NotificationServices from '../Screens/Account/NotificationServices';
 import Help from '../Screens/Account/Help';
 import UserPage from '../Screens/Account/UserPage';
 
+
 const Stack = createStackNavigator();
 
 const AccountStack = () => {
@@ -37,6 +38,7 @@ const AccountStack = () => {
       />
       <Stack.Screen name="Help" component={Help} />
       <Stack.Screen name="UserPage" component={UserPage} />
+
     </Stack.Navigator>
   );
 };

@@ -9,9 +9,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import database from '@react-native-firebase/database';
+import {LogBox} from "react-native";
+
 
 const renderItem = ({item}, navigation) => {
-
+  
   if (item.offer == 'BestSelling'){
     return (
       // CARD1111111111111111111111
@@ -55,6 +57,10 @@ const renderItem = ({item}, navigation) => {
 };
 
 const BestSellingCrousel = ({navigation}) => {
+  
+  LogBox.ignoreLogs([
+    "VirtualizedLists should never be nested inside"
+  ])
   const [data, setData] = useState([])
 
   useEffect(() => {

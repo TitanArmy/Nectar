@@ -6,6 +6,10 @@ import AppLink from 'react-native-app-link';
 export default function Example () {
    const onPressButton = () => {
     // console.log("Link clicked for ");
+
+
+    // maybeOpenURL(url, config) Opens link if app is present. If not, it opens an app store to prompt the user to download it.
+    
     AppLink.maybeOpenURL("shopzcoin://", { appName: "Shopzcoin", appStoreId: "1444565782", appStoreLocale:"my", playStoreId:"com.wcv.shopzcoin" }).then(() => {
       // console.log('User pressed');
     })
@@ -14,7 +18,8 @@ export default function Example () {
     });
   };
 
-   
+   // button where user click to go on playstore
+
     return (
       <View style={styles.container}>
       <Button
