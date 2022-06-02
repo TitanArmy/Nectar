@@ -157,7 +157,7 @@ const data = [
        </View>
       <View>
       <FlatList
-        data={(addGroceryItems)(removeGroceryItem)}
+        data={(addGroceryItems)}
         renderItem={(item)=>(renderItem(item))}
         keyExtractor={item => item}
       />
