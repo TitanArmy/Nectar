@@ -10,8 +10,11 @@ import Favourites from '../Screens/Favourites';
 import ExploreStack from './ExploreStack';
 import HomeStackNav from './HomeStackNav';
 
+import { useSelector,useDispatch } from 'react-redux';
+
 const BottomNavigation = () => {
-  let cartVal =7
+  const addGroceryItems = useSelector(state => state.groceryReducers.groceryItems)
+  let cartVal =addGroceryItems.length
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator>

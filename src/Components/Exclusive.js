@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import database from '@react-native-firebase/database';
 import {LogBox} from "react-native";
-
+import {useSelector, useDispatch} from 'react-redux';
+import { addGroceryItem } from '../Screens/Store/actions/grocery';
 
 // const data = [
   //   {
@@ -36,8 +37,8 @@ import {LogBox} from "react-native";
 // ];
 
 
-const renderItem = ({item}, navigation) => {
-  // console.log(navigation)
+const renderItem = ({item},navigation,dispatch) => {
+ 
   if (item.offer == 'ExclusiveOffer') {
     return (
       // CARD1111111111111111111111
@@ -46,6 +47,7 @@ const renderItem = ({item}, navigation) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('ProductDetail', {
+              id:item.id,
               Img:item.Img,
               title: item.title,
               category: item.category,
@@ -68,7 +70,18 @@ const renderItem = ({item}, navigation) => {
 
         <View style={styles.itemPriceView}>
           <Text style={styles.itemPrice}>${item.price}</Text>
-          <TouchableOpacity style={styles.itemQtyBtn}>
+          <TouchableOpacity style={styles.itemQtyBtn}
+          onPress={() =>
+           dispatch(
+             addGroceryItem({
+              id:item.id,
+               Img:item.Img,
+           title: item.title,
+               price: item.price                                                                            
+            }),
+           )
+         }
+          >
             <Image source={require('../Assets/plusWhite.png')} />
           </TouchableOpacity>
         </View>
@@ -78,7 +91,7 @@ const renderItem = ({item}, navigation) => {
 };
 
 const ExclusiveCrousel = ({navigation}) => {
-  
+
   LogBox.ignoreLogs([
     "VirtualizedLists should never be nested inside"
   ])
@@ -87,6 +100,12 @@ const ExclusiveCrousel = ({navigation}) => {
   useEffect(() => {
     readUserData();
   }, []);
+
+  
+  const dispatch = useDispatch();
+  // const addGroceryItems = useSelector(
+  //   state => state.groceryReducers.groceryItems,
+  // );
 
   //ReadUser data from rnFirebase realtime DB
   const readUserData = async () => {
@@ -101,7 +120,7 @@ const ExclusiveCrousel = ({navigation}) => {
     <FlatList
       data={data}
       keyExtractor={item => item.id}
-      renderItem={item => renderItem(item, navigation)}
+      renderItem={(item) => renderItem(item, navigation,dispatch)}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
     />

@@ -83,63 +83,7 @@ const HomeScreen = ({navigation}) => {
         <BestSellingCrousel navigation={navigation}/>
       </View>
 
-      {/* ITEM BEST SELLING  */}
-      <View style={styles.item1}>
-          {/* CARD1111111111111111111111 */}
-          <View style={styles.itemCard1}>
-            <View 
-            style={styles.itemCardImg}
-            >
-              <Image
-                  source={require('../Assets/pngfuel.png')}
-              />
-            </View>
-            
-              <View style={styles.itemCardDes}>
-              <Text style={styles.itemCardHead}>Diet Coke</Text>
-              <Text>355ml, Price</Text>
-              </View>
-            
-
-            <View style={styles.itemPriceView}>
-            <Text style={styles.itemPrice}>$1.99</Text>
-              <TouchableOpacity style={styles.itemQtyBtn}>
-                  <Image
-                      source={require('../Assets/plusWhite.png')}
-                  />
-              </TouchableOpacity>
-            </View>
-          </View>
-          {/* CARD 2222222222222222222222222 */}
-          
-          <View style={styles.itemCard1}>
-            <View 
-            style={styles.itemCardImg}
-            >
-              <Image
-                  source={require('../Assets/pngfuel1.png')}
-              />
-            </View>
-            
-              <View style={styles.itemCardDes}>
-              <Text style={styles.itemCardHead}>Diet Coke</Text>
-              <Text>355ml, Price</Text>
-              </View>
-            
-
-            <View style={styles.itemPriceView}>
-            <Text style={styles.itemPrice}>$1.99</Text>
-              <TouchableOpacity style={styles.itemQtyBtn}>
-                  <Image
-                      source={require('../Assets/plusWhite.png')}
-                  />
-              </TouchableOpacity>
-            </View>
-          </View>
-        
       
-      </View>
-
       {/* Groceries */}
       <View style={{flexDirection:'row',justifyContent:'space-between',marginHorizontal:15,marginVertical:20,alignItems:'center'}}>
         <Text style={{fontSize:20,fontWeight:'bold',color:'#000'}}>Groceries</Text>

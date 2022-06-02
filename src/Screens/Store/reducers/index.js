@@ -6,7 +6,7 @@ import countReducer from "./countReducer";
 import Pricecounter from "./Pricecounter";
 
 const reducer = combineReducers({
-  groceryState: groceryReducer,
+  groceryReducers: groceryReducer,
   countReducer: countReducer,
   flagsState: flagsReducer,
   Pricecounter : Pricecounter

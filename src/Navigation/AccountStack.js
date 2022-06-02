@@ -12,6 +12,7 @@ import Delivery from '../Screens/Account/Delivery';
 import NotificationServices from '../Screens/Account/NotificationServices';
 import Help from '../Screens/Account/Help';
 import UserPage from '../Screens/Account/UserPage';
+import Cart from '../Screens/Cart'
 
 
 const Stack = createStackNavigator();
@@ -37,6 +38,7 @@ const AccountStack = () => {
         component={NotificationServices}
       />
       <Stack.Screen name="Help" component={Help} />
+      <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="UserPage" component={UserPage} />
 
     </Stack.Navigator>

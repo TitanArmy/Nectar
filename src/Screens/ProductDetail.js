@@ -1,109 +1,172 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import React,{useState} from 'react';
-import { ScrollView } from 'react-native-virtualized-view';
-import { useDispatch, useSelector } from "react-redux";
-import { Provider } from 'react-native-paper';
-import {increment,DECREMENT_COUNT, decrement} from '../Screens/Store/actions/counters.'
-import { Button } from 'react-native-paper';
+import React, {useState, useEffect} from 'react';
+import {ScrollView} from 'react-native-virtualized-view';
+import {useDispatch, useSelector} from 'react-redux';
+import {Provider} from 'react-native-paper';
+import {
+  increment,
+  DECREMENT_COUNT,
+  decrement,
+} from '../Screens/Store/actions/counters';
+import {Button} from 'react-native-paper';
 import counter from './Store/reducers/countReducer';
-import {Pricecounter} from '../Screens/Store/reducers/Pricecounter'
-import { addGroceryItem, addToCart } from './Store/actions/grocery';
-import { ADD_TO_CART } from './Store/actions/types';
+import {Pricecounter} from '../Screens/Store/reducers/Pricecounter';
+import {
+  addToCart,
+  groceryReducer,
+  addGroceryItem,
+} from './Store/actions/grocery';
+import {ADD_TO_CART} from './Store/actions/types';
 import Cart from './Cart';
-import {addGroceryItems} from '../Screens/Store/actions/grocery'
-import { removeGroceryItem } from './Store/actions/grocery';
+import {LogBox} from 'react-native';
 
-
-const ProductDetail= props=> {
+const ProductDetail = props => {
+  useEffect(() => {
+    LogBox.ignoreLogs([
+      'Warning: Failed prop type: Invalid props.style key `uri` supplied to `Image`',
+    ]);
+  }, []);
 
   const dispatch = useDispatch();
-
+  const [Favourite, setFavourite] = useState();
   const counter = useSelector(state => state.countReducer);
   const Pricecounters = useSelector(state => state.Pricecounter);
-  const addGroceryItems = useSelector(state => state.groceryState)
-  const removeGroceryItem = useSelector(state => state.groceryState)
-  const {price, title,Img,qty}= props.route.params;
-
-  // console.log("hjedhewhdede" ,addGroceryItems.groceryItems)
+  const {price, title, Img, qty, id} = props.route.params;
+  const addGroceryItems = useSelector(state => state.groceryReducers.groceryItems);
+  const clearFromCarts = useSelector(state => state.groceryReducers.groceryItems)
+  const favouritess=useSelector(state=>state.groceryReducers)
+  console.log('HHHHIIIIIII------', addGroceryItems);
 
   return (
     <ScrollView>
-    <View style={styles.container}>
-      {/* Items */}
-      <View style={styles.itemImg}>
-        <Image source={require('../Assets/itemApple.png')} />
-      </View>
-
-      {/* Item Title */}
-      <View style={styles.itemTitle}>
-        <View>
-          <Text style={styles.itemTitleTxt}>Natural Red Apple</Text>
-          <Text>1kg, Price</Text>
-        </View>
+      <View style={styles.container}>
+        {/* Items */}
+        <View style={styles.itemImg}>
         <Image
-          style={styles.centerView}
-          source={require('../Assets/heart.png')}
-        />
-      </View>
+              style={{height: 100, width: 100}}
+              source={
+                {uri: Img}
+                // require('../Assets/itemApple.png')
+              }
+              />
+        </View>
 
-      {/* Rate */}
-      <View style={styles.itemRateCard}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <TouchableOpacity onPress= {()=>dispatch(decrement())}>
-           <Image source={require('../Assets/minus.png')} />
+        {/* Item Title */}
+        <View style={styles.itemTitle}>
+          <View>
+            <Text style={styles.itemTitleTxt}>{title}</Text>
+            <Text>{qty}</Text>
+          </View>
+          <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => {
+                setFavourite(!Favourite);
+             
+              }}>
+              {Favourite ? (
+                <Image
+                  style={styles.centerView}
+                  source={require('../Assets/broken.png')}
+                />
+              ) : (
+                <Image
+                  style={styles.centerView}
+                  source={require('../Assets/heart.png')}
+                />
+              )}
             </TouchableOpacity>
-            <Text style={{marginLeft:10,bottom:7}}>{counter.count}</Text>
-            <TouchableOpacity onPress= {()=>dispatch(increment())}>
-           <Image 
-           style={{marginLeft:8,bottom:7}}
-           source={require('../Assets/plus.png')} />
+        </View>
+
+        {/* Rate */}
+        <View style={styles.itemRateCard}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <TouchableOpacity
+              onPress={() =>
+                dispatch(
+                  decrement({
+                    id: id,
+                    Img: Img,
+                    title: title,
+                    qty: qty,
+                    price: price,
+                  }),
+                )
+              }>
+              <Image source={require('../Assets/minus.png')} />
+            </TouchableOpacity>
+            <Text style={{marginLeft: 10, bottom: 7}}>{counter.count}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                dispatch(
+                  increment({
+                    id: id,
+                    Img: Img,
+                    title: title,
+                    qty: qty,
+                    price: price,
+                  }),
+                )
+              }>
+              <Image
+                style={{marginLeft: 8, bottom: 7}}
+                source={require('../Assets/plus.png')}
+              />
             </TouchableOpacity>
           </View>
-          <Text style={styles.itemRate}> ₹{price*(counter.count)}</Text>
+          <Text style={styles.itemRate}> ₹{price * counter.count}</Text>
         </View>
 
-      {/* Item Detail */}
-      <View style={styles.itemDetailCard}>
-        <Text style={styles.productDetail}>Product Detail</Text>
-        <Image source={require('../Assets/downArrow.png')} />
-      </View>
-
-      <View style={styles.productDetailDesc}>
-        <Text>
-          Apples are nutritious. Apples may be good for weight loss. apples may
-          be good for your heart. As part of a healtful and varied diet.
-        </Text>
-      </View>
-
-      <View style={styles.nutritionCard}>
-        <Text style={styles.nutrition}>Nutritions</Text>
-        <Image source={require('../Assets/rightArrow.png')} />
-      </View>
-
-      <View style={styles.reviewCard}>
-        <Text style={styles.review}>Review</Text>
-        <View style={styles.star}>
-          <Image source={require('../Assets/star.png')} />
-          <Image source={require('../Assets/star.png')} />
-          <Image source={require('../Assets/star.png')} />
-          <Image source={require('../Assets/star.png')} />
-          <Image source={require('../Assets/star.png')} />
-          <Image
-            style={styles.lastStar}
-            source={require('../Assets/rightArrow.png')}
-          />
+        {/* Item Detail */}
+        <View style={styles.itemDetailCard}>
+          <Text style={styles.productDetail}>Product Detail</Text>
+          <Image source={require('../Assets/downArrow.png')} />
         </View>
-      </View>
 
-      <TouchableOpacity style={styles.basketBtn} onPress={()=>dispatch(addGroceryItem({
-        Img:Img,
-        title:title,
-        qty:qty,
-        price:price
-      }))}>
-        <Text style={styles.basketBtnTxt}>Add To Basket</Text>
-      </TouchableOpacity>
-    </View>
+        <View style={styles.productDetailDesc}>
+          <Text>
+            Apples are nutritious. Apples may be good for weight loss. apples
+            may be good for your heart. As part of a healtful and varied diet.
+          </Text>
+        </View>
+
+        <View style={styles.nutritionCard}>
+          <Text style={styles.nutrition}>Nutritions</Text>
+          <Image source={require('../Assets/rightArrow.png')} />
+        </View>
+
+        <View style={styles.reviewCard}>
+          <Text style={styles.review}>Review</Text>
+          <View style={styles.star}>
+            <Image source={require('../Assets/star.png')} />
+            <Image source={require('../Assets/star.png')} />
+            <Image source={require('../Assets/star.png')} />
+            <Image source={require('../Assets/star.png')} />
+            <Image source={require('../Assets/star.png')} />
+            <Image
+              style={styles.lastStar}
+              source={require('../Assets/rightArrow.png')}
+            />
+          </View>
+        </View>
+
+        <TouchableOpacity
+          style={styles.basketBtn}
+          onPress={() =>
+            dispatch(
+              addGroceryItem({
+                id: id,
+                Img: Img,
+                title: title,
+                qty: qty,
+                price: price                                                                                 * counter.count,
+              }),
+            )
+          }>
+          <Text style={styles.basketBtnTxt}>
+            Add To Basket ₹ {price * counter.count}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };

@@ -18,7 +18,7 @@ import {
               if (qty > 1) {
                   setQty(qty = qty - 1);
               }
-          
+
           }}
           style={{
             justifyContent: 'center',

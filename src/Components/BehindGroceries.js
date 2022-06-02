@@ -11,7 +11,8 @@ import {
 
 import {LogBox} from "react-native";
 
-
+import {useSelector, useDispatch} from 'react-redux';
+import { addGroceryItem } from '../Screens/Store/actions/grocery';
 
 import database from '@react-native-firebase/database';
 
@@ -74,13 +75,14 @@ import database from '@react-native-firebase/database';
       const numCol = 2;
       const WIDTH = Dimensions.get('window').width - 30;
       
-      const renderItem = ({item}, navigation) => {
+      const renderItem = ({item}, navigation,dispatch) => {
         return (
           // CARD1111111111111111111111
           <View style={styles.itemCard1}>
       <TouchableOpacity
       onPress={() => {
         navigation.navigate('ProductDetail', {
+              id:item.id,
               Img:item.Img,
               title: item.title,
               category: item.category,
@@ -107,7 +109,18 @@ import database from '@react-native-firebase/database';
 
       <View style={styles.itemPriceView}>
         <Text style={styles.itemPrice}>${item.price}</Text>
-        <TouchableOpacity style={styles.itemQtyBtn}>
+        <TouchableOpacity style={styles.itemQtyBtn}
+        onPress={() =>
+          dispatch(
+            addGroceryItem({
+             id:item.id,
+              Img:item.Img,
+          title: item.title,
+              price: item.price                                                                            
+           }),
+          )
+        }
+        >
           <Image source={require('../Assets/plusWhite.png')} />
         </TouchableOpacity>
       </View>
@@ -122,9 +135,10 @@ const BehindGroceries = ({navigation}) => {
   ])
   
   const [data, setData] = useState([])
+  const dispatch = useDispatch();
 
     useEffect(() => {
-      readUserData()
+      readUserData() 
         LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
         
       }, [])
@@ -142,7 +156,7 @@ const BehindGroceries = ({navigation}) => {
     <FlatList
       nestedScrollEnabled
       data={data}
-      renderItem={item => renderItem(item, navigation)}
+      renderItem={item => renderItem(item, navigation,dispatch)}
       numColumns={numCol}
       keyExtractor={item => item.id}
     />

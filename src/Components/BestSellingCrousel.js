@@ -10,9 +10,11 @@ import {
 } from 'react-native';
 import database from '@react-native-firebase/database';
 import {LogBox} from "react-native";
+import {useSelector, useDispatch} from 'react-redux';
+import { addGroceryItem } from '../Screens/Store/actions/grocery';
 
 
-const renderItem = ({item}, navigation) => {
+const renderItem = ({item}, navigation,dispatch) => {
   
   if (item.offer == 'BestSelling'){
     return (
@@ -22,6 +24,7 @@ const renderItem = ({item}, navigation) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('ProductDetail', {
+              id:item.id,
               Img:item.Img,
               title: item.title,
               category: item.category,
@@ -47,7 +50,18 @@ const renderItem = ({item}, navigation) => {
   
         <View style={styles.itemPriceView}>
           <Text style={styles.itemPrice}>${item.price}</Text>
-          <TouchableOpacity style={styles.itemQtyBtn}>
+          <TouchableOpacity style={styles.itemQtyBtn}
+           onPress={() =>
+            dispatch(
+              addGroceryItem({
+               id:item.id,
+                Img:item.Img,
+            title: item.title,
+                price: item.price                                                                            
+             }),
+            )
+          }
+          >
             <Image source={require('../Assets/plusWhite.png')} />
           </TouchableOpacity>
         </View>
@@ -66,6 +80,8 @@ const BestSellingCrousel = ({navigation}) => {
   useEffect(() => {
     readUserData()
   }, [])
+
+  const dispatch = useDispatch();
   
   //ReadUser data from rnFirebase realtime DB
   const readUserData = async () => {
@@ -78,7 +94,7 @@ const BestSellingCrousel = ({navigation}) => {
   return (
     <FlatList
       data={data}
-      renderItem={item => renderItem(item, navigation)}
+      renderItem={item => renderItem(item, navigation,dispatch)}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
       keyExtractor={item => item.id}
