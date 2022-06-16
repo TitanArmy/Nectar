@@ -9,3 +9,6 @@ export const CLEAR_FROM_CART = "CLEAR_FROM_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
 export const SET_ON_BOARDED = "SET_ON_BOARDED";
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGOUT = "LOGOUT";

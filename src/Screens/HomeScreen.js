@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   container:{
     // borderWidth:3,
     // borderColor:"red",
-    // backgroundColor:'#fff'
+    // backgroundColor:'black'
   },
   item1: {
     flexDirection: 'row',

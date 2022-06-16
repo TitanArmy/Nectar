@@ -7,7 +7,11 @@ import {
   Alert,
 } from 'react-native';
 import React from 'react';
+
 import { ScrollView } from 'react-native-virtualized-view';
+import {useDispatch, useSelector} from 'react-redux';
+import { addGroceryItem } from './Store/actions/grocery';
+import counter from  './Store/reducers/countReducer'
 const data = [
   {
     id: 1,
@@ -104,7 +108,13 @@ const renderItems = ({item}) => {
     </ScrollView>
 )
 };
-const Favourites = () => {
+const Favourites = (props) => {
+
+  const dispatch = useDispatch();
+  const {price, title, Img, qty, id,amount} = props;
+  const addGroceryItems = useSelector(state => state.groceryReducers.groceryItems);
+  const counter = useSelector(state => state.countReducer);
+  // console.log('fjhgff', addGroceryItems);
   return (
     <ScrollView>
       <View
@@ -132,11 +142,22 @@ const Favourites = () => {
             marginRight: 20,
             flexDirection: 'row',
           }}
-          onPress={() => {
-            alert('clicked');
-          }}>
+          onPress={() =>
+            dispatch(
+              addGroceryItem({data
+                // id: id,
+                // Img: Img,
+                // title: title,
+                // qty: qty,
+                // price: price ,
+                // amount:amount                                                                                * counter.count,
+              }),
+            )
+          }
+         >
           <Text style={{color: '#000', fontWeight: 'bold'}}>
             Add All To Cart
+            {price * counter.count}
           </Text>
         </TouchableOpacity>
 

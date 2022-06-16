@@ -18,7 +18,7 @@ const Social = ({navigation}) => {
      />
     <View>
      <TouchableOpacity
-     onPress={()=>{navigation.navigate('OtpScreen')}}
+     onPress={()=>{navigation.navigate('Signin')}}
      >
        
      <Image style={{marginLeft:300}}

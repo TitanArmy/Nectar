@@ -19,15 +19,16 @@ const OnBoarding = ({navigation}) => {
         style={styles.image}>
         <Image
           source={require('../../Assets/carrot.png')}
-          style={{alignSelf: 'center', top: 380, left: 20}}
+          style={{alignSelf: 'center', top: 439, left: 20}}
         />
         <View
           style={{
             alignItems: 'center',
             justifyContent: 'center',
             position: 'absolute',
-            left: 90,
-            top: 440,
+            marginVertical:515,
+            marginHorizontal:110
+            
           }}>
           <Text style={{fontSize: 40, fontWeight: 'bold', color: '#fff'}}>
             Welcome
@@ -41,15 +42,15 @@ const OnBoarding = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
             position: 'absolute',
-            left: 75,
-            top: 562,
+            marginHorizontal: 100,
+            marginVertical:632,
           }}>
           <Text style={{fontSize: 14, color: '#FCFCFC'}}>
             Get Your Groceries in as fast as one hour
           </Text>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('BottomNavigation')}>
+          onPress={() => navigation.navigate('Social')}>
           <Text style={styles.text}>Get Started</Text>
         </TouchableOpacity>
       </ImageBackground>
@@ -82,13 +83,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     alignItems: 'center',
-    marginTop: 570,
+    marginTop: 630,
     padding: 20,
     backgroundColor: '#53B175',
     borderRadius: 40,
     width: 320,
     height: 70,
-    marginHorizontal: 45,
+    marginHorizontal: 55,
   },
   text2: {
     fontSize: 35,

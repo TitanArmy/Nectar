@@ -74,10 +74,11 @@ const renderItem = ({item},navigation,dispatch) => {
           onPress={() =>
            dispatch(
              addGroceryItem({
-              id:item.id,
+               id:item.id,
                Img:item.Img,
-           title: item.title,
-               price: item.price                                                                            
+               title: item.title,
+               price: item.price,
+               qty: item.qty                                                                          
             }),
            )
          }

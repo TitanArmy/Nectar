@@ -19,8 +19,13 @@ import {
   addToCart,
   addGroceryItem,
   removeGroceryItem,
-  clearFromCart
+  clearFromCart,
 } from './Store/actions/grocery';
+import {
+  increment,
+  DECREMENT_COUNT,
+  decrement,
+} from '../Screens/Store/actions/counters';
 import counter from './Store/reducers/countReducer';
 import {LogBox} from 'react-native';
 
@@ -76,7 +81,8 @@ const data = [
   },
 ];
 
-const renderItem = ({item}, dispatch) => {
+const renderItem = ({item}, dispatch, counter) => {
+  console.log(counter, 'fhidvhuirhfcr');
   return (
     <ScrollView>
       <View style={{flexDirection: 'row'}}>
@@ -114,7 +120,21 @@ const renderItem = ({item}, dispatch) => {
             {item.qty}
           </Text>
           <View style={{position: 'relative', marginRight: 50, marginLeft: 40}}>
-            <QtyCounter />
+            {/* <QtyCounter /> */}
+            <TouchableOpacity onPress={() => dispatch(decrement())}>
+              <Image
+                style={{bottom: -10, right: 3}}
+                source={require('../Assets/minus.png')}
+              />
+            </TouchableOpacity>
+            <Text style={{marginLeft: 22, bottom: 2}}>{counter.count}</Text>
+            <TouchableOpacity onPress={() => dispatch(increment())}>
+              <Image
+                style={{marginLeft: 38, bottom: 20}}
+                source={require('../Assets/plus.png')}
+              />
+            </TouchableOpacity>
+            {/* <Text style={styles.itemRate}> ₹{item.price * counter.count}</Text> */}
           </View>
         </View>
         <View style={{marginLeft: 370, position: 'absolute'}}>
@@ -122,11 +142,11 @@ const renderItem = ({item}, dispatch) => {
             style={{
               justifyContent: 'center',
               marginTop: 90,
-              marginLeft: -25,
+              marginLeft: -36,
               fontWeight: 'bold',
               color: '#000',
             }}>
-            {item.price}
+            ₹{item.price * counter.count}
           </Text>
         </View>
         <View style={{position: 'absolute', marginLeft: 350, marginTop: 40}}>
@@ -158,7 +178,7 @@ const Cart = ({item}, props) => {
     ]);
   }, []);
 
-  const counter = useSelector(state => state.countReducer.groceryItems);
+  const counter = useSelector(state => state.countReducer);
   const {price, id, Img, title, qty} = props;
   const dispatch = useDispatch();
   const addGroceryItems = useSelector(
@@ -193,7 +213,7 @@ const Cart = ({item}, props) => {
         <View>
           <FlatList
             data={addGroceryItems}
-            renderItem={item => renderItem(item, dispatch)}
+            renderItem={item => renderItem(item, dispatch, counter)}
             keyExtractor={item => item}
           />
           <View>

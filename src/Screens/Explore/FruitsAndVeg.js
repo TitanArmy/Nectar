@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 
 import database from '@react-native-firebase/database';
+import {useSelector, useDispatch} from 'react-redux';
+import { addGroceryItem } from '../../Screens/Store/actions/grocery';
 
 
   // const data = [
@@ -71,7 +73,7 @@ import database from '@react-native-firebase/database';
 const numCol = 2;
 const WIDTH = Dimensions.get('window').width - 30;
 
-const renderItem = ({item}, navigation) => {
+const renderItem = ({item}, navigation,dispatch) => {
   if (item.category == "Fruits"){
      return (
     // CARD1111111111111111111111
@@ -105,7 +107,19 @@ const renderItem = ({item}, navigation) => {
 
       <View style={styles.itemPriceView}>
         <Text style={styles.itemPrice}>${item.price}</Text>
-        <TouchableOpacity style={styles.itemQtyBtn}>
+        <TouchableOpacity style={styles.itemQtyBtn}
+         onPress={() =>
+          dispatch(
+            addGroceryItem({
+              id:item.id,
+              Img:item.Img,
+              title: item.title,
+              price: item.price,
+              qty: item.qty                                                                          
+           }),
+          )
+        }
+        >
           <Image source={require('../../Assets/plusWhite.png')} />
         </TouchableOpacity>
       </View>
@@ -119,6 +133,7 @@ const BehindGroceries = ({navigation}) => {
 
 
   const [data, setData] = useState([])
+  const dispatch = useDispatch();
 
     useEffect(() => {
       readUserData()
@@ -139,7 +154,7 @@ const BehindGroceries = ({navigation}) => {
     <FlatList
       nestedScrollEnabled
       data={data}
-      renderItem={item => renderItem(item, navigation)}
+      renderItem={item => renderItem(item, navigation,dispatch)}
       numColumns={numCol}
       keyExtractor={item => item.id}
     />

@@ -57,7 +57,8 @@ const renderItem = ({item}, navigation,dispatch) => {
                id:item.id,
                 Img:item.Img,
             title: item.title,
-                price: item.price                                                                            
+                price: item.price,
+                qty: item.qty                                                                          
              }),
             )
           }

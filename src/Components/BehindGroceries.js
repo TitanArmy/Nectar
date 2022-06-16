@@ -116,7 +116,8 @@ import database from '@react-native-firebase/database';
              id:item.id,
               Img:item.Img,
           title: item.title,
-              price: item.price                                                                            
+              price: item.price ,
+              qty:item.qty                                                                           
            }),
           )
         }

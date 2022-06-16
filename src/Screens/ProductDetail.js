@@ -31,11 +31,11 @@ const ProductDetail = props => {
   const [Favourite, setFavourite] = useState();
   const counter = useSelector(state => state.countReducer);
   const Pricecounters = useSelector(state => state.Pricecounter);
-  const {price, title, Img, qty, id} = props.route.params;
+  const {price, title, Img, qty, id,amount} = props.route.params;
   const addGroceryItems = useSelector(state => state.groceryReducers.groceryItems);
   const clearFromCarts = useSelector(state => state.groceryReducers.groceryItems)
   const favouritess=useSelector(state=>state.groceryReducers)
-  console.log('HHHHIIIIIII------', addGroceryItems);
+  // console.log('HHHHIIIIIII------', addGroceryItems);
 
   return (
     <ScrollView>
@@ -61,7 +61,7 @@ const ProductDetail = props => {
               activeOpacity={0.7}
               onPress={() => {
                 setFavourite(!Favourite);
-             
+          
               }}>
               {Favourite ? (
                 <Image
@@ -89,6 +89,7 @@ const ProductDetail = props => {
                     title: title,
                     qty: qty,
                     price: price,
+                    amount:amount
                   }),
                 )
               }>
@@ -104,6 +105,8 @@ const ProductDetail = props => {
                     title: title,
                     qty: qty,
                     price: price,
+                    amount:amount
+
                   }),
                 )
               }>
@@ -158,7 +161,8 @@ const ProductDetail = props => {
                 Img: Img,
                 title: title,
                 qty: qty,
-                price: price                                                                                 * counter.count,
+                price: price ,
+                amount:amount                                                                                * counter.count,
               }),
             )
           }>

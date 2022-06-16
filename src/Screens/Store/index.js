@@ -16,7 +16,3 @@ const persistConfig = {
     let persistor = persistStore(store)
     return { store, persistor }
   }
-
-// const configureStore = () => createStore(reducer);
-
-// export default configureStore;
