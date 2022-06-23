@@ -12,3 +12,5 @@ export const SET_ON_BOARDED = "SET_ON_BOARDED";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
+export const SET_FAVOURITE='SET_FAVOURITE';
+export const REMOVE_FAVOURITE='REMOVE_FAVOURITE';

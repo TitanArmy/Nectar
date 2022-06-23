@@ -1,5 +1,4 @@
-import { ActionSheetIOS } from 'react-native';
-import {INCREMENT_COUNT, DECREMENT_COUNT} from '../actions/types';
+import {INCREMENT_COUNT, DECREMENT_COUNT,PRICE_CHANGE} from '../actions/types';
 
 export const INITIAL_STATE = {
   count: 0,
@@ -13,12 +12,17 @@ const countReducer = (state = INITIAL_STATE, {type}) => {
         count: state.count + 1,
       };
     case DECREMENT_COUNT:
-      // if (state > 0) {
+    
         return {
           ...state,
           count: state.count - 1,
         };
-      // }
+    
+      case PRICE_CHANGE:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
     default:
       return state;
   }

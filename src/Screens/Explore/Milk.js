@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   itemPriceView: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
     paddingVertical: 10,
   },
   itemPrice: {

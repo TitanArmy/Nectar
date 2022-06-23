@@ -114,6 +114,7 @@ const Favourites = (props) => {
   const {price, title, Img, qty, id,amount} = props;
   const addGroceryItems = useSelector(state => state.groceryReducers.groceryItems);
   const counter = useSelector(state => state.countReducer);
+  
   // console.log('fjhgff', addGroceryItems);
   return (
     <ScrollView>
@@ -150,7 +151,7 @@ const Favourites = (props) => {
                 // title: title,
                 // qty: qty,
                 // price: price ,
-                // amount:amount                                                                                * counter.count,
+                // amount:amount                                                                             
               }),
             )
           }

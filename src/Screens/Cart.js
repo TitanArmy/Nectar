@@ -11,7 +11,7 @@ import {
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ScrollView} from 'react-native-virtualized-view';
+import { ScrollView } from 'react-native-gesture-handler';
 import Checkout from './Checkout';
 import QtyCounter from '../Components/QtyCounter';
 import {useSelector, useDispatch} from 'react-redux';
@@ -25,236 +25,186 @@ import {
   increment,
   DECREMENT_COUNT,
   decrement,
-} from '../Screens/Store/actions/counters';
+} from '../Screens/Store/actions/grocery';
 import counter from './Store/reducers/countReducer';
 import {LogBox} from 'react-native';
 
-const data = [
-  {
-    id: 1,
-    Img: require('../Assets/pepper.png'),
-    title: 'Bell Pepper Red',
-    qty: '1kg',
-    price: 4.99,
-  },
-  {
-    id: 2,
-    Img: require('../Assets/eggs.png'),
-    title: 'Egg Chicken Red',
-    qty: '4pcs',
-    price: 1.99,
-  },
-  {
-    id: 3,
-    Img: require('../Assets/OrganicBanana.png'),
-    title: 'Organic Bananas',
-    qty: '12Kg',
-    price: 3.01,
-  },
-  {
-    id: 4,
-    Img: require('../Assets/ginger.png'),
-    title: 'Ginger',
-    qty: '200gm',
-    price: 2.99,
-  },
-  {
-    id: 5,
-    Img: require('../Assets/eggs.png'),
-    title: 'Egg Chicken Red',
-    qty: '4pcs',
-    price: 1.99,
-  },
-  {
-    id: 6,
-    Img: require('../Assets/OrganicBanana.png'),
-    title: 'Organic Bananas',
-    qty: '12Kg',
-    price: 3.01,
-  },
-  {
-    id: 7,
-    Img: require('../Assets/ginger.png'),
-    title: 'Ginger',
-    qty: '200gm',
-    price: 2.99,
-  },
-];
 
-const renderItem = ({item}, dispatch, counter) => {
-  console.log(counter, 'fhidvhuirhfcr');
-  return (
-    <ScrollView>
-      <View style={{flexDirection: 'row'}}>
-        <Image
-          style={{
-            justifyContent: 'center',
-            marginTop: 40,
-            marginLeft: 20,
-            width: 70,
-            height: 55,
-          }}
-          source={{uri: item.Img}}
-        />
 
-        <View>
+const Cart = () => {
+  const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
+ 
+
+ 
+  const addtoBasketCounter = useSelector(
+    state => state.groceryReducers.groceryItems,
+  );
+  
+  // console.log('cart Data=====>', JSON.stringify(addtoBasketCounter));
+  
+
+  const renderItem = (cartItem ) => {
+    console.log('item rednder cart', cartItem);
+  const item=cartItem.item;
+   
+    return (
+      <ScrollView>
+        <View style={{flexDirection: 'row'}}>
+          <Image
+            style={{
+              justifyContent: 'center',
+              marginTop: 40,
+              marginLeft: 20,
+              width: 70,
+              height: 55,
+            }}
+            source={{uri: item.Img}}
+          />
+  
           <View>
+            <View>
+              <Text
+                style={{
+                  justifyContent: 'center',
+                  marginTop: 35,
+                  marginLeft: 45,
+                  fontWeight: 'bold',
+                  color: '#000',
+                }}>
+                {item.title}
+              </Text>
+            </View>
             <Text
               style={{
                 justifyContent: 'center',
-                marginTop: 35,
+                marginTop: 0,
                 marginLeft: 45,
+                color: '#000',
+              }}>
+              {item.qty}
+            </Text>
+            <View
+              style={{
+                marginRight: 50,
+                marginLeft: 40,
+                flexDirection: 'row',
+                marginTop: 30,
+              }}>
+              {/* <QtyCounter/> */}
+              <TouchableOpacity onPress={() => dispatch(decrement(item.id))}>
+                <Image source={require('../Assets/minus.png')} />
+              </TouchableOpacity>
+              <Text style={{margin: 20, alignItems: 'center', marginTop:-5}}>
+              {item.amount}
+              </Text>
+  
+              <TouchableOpacity onPress={() => dispatch(increment(item.id))}>
+                <Image 
+                style={{marginVertical:-5}}
+                source={require('../Assets/plus.png')} />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{marginLeft: 370, position: 'absolute'}}>
+            <Text
+              style={{
+                justifyContent: 'center',
+                marginTop: 90,
+                marginLeft: -25,
                 fontWeight: 'bold',
                 color: '#000',
               }}>
-              {item.title}
+              ${item.price *item.amount}
             </Text>
           </View>
-          <Text
-            style={{
-              justifyContent: 'center',
-              marginTop: 0,
-              marginLeft: 45,
-              color: '#000',
-            }}>
-            {item.qty}
-          </Text>
-          <View style={{position: 'relative', marginRight: 50, marginLeft: 40}}>
-            {/* <QtyCounter /> */}
-            <TouchableOpacity onPress={() => dispatch(decrement())}>
-              <Image
-                style={{bottom: -10, right: 3}}
-                source={require('../Assets/minus.png')}
-              />
-            </TouchableOpacity>
-            <Text style={{marginLeft: 22, bottom: 2}}>{counter.count}</Text>
-            <TouchableOpacity onPress={() => dispatch(increment())}>
-              <Image
-                style={{marginLeft: 38, bottom: 20}}
-                source={require('../Assets/plus.png')}
-              />
-            </TouchableOpacity>
-            {/* <Text style={styles.itemRate}> ₹{item.price * counter.count}</Text> */}
-          </View>
-        </View>
-        <View style={{marginLeft: 370, position: 'absolute'}}>
-          <Text
-            style={{
-              justifyContent: 'center',
-              marginTop: 90,
-              marginLeft: -36,
-              fontWeight: 'bold',
-              color: '#000',
-            }}>
-            ₹{item.price * counter.count}
-          </Text>
-        </View>
-        <View style={{position: 'absolute', marginLeft: 350, marginTop: 40}}>
-          <TouchableOpacity
-            onPress={() => dispatch(removeGroceryItem(item.key))}>
-            <Image
-              style={{uri: item.Img}}
-              source={require('../Assets/cross.png')}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
-  );
-};
-
-const Cart = ({item}, props) => {
-  // const [index, setIndex] = useState(0);
-  // const isCarousel = useRef(null);
-
-  useEffect(() => {
-    LogBox.ignoreLogs([
-      'Warning: Failed prop type: Invalid props.style key `uri` supplied to `Image`',
-    ]);
-  }, []);
-  useEffect(() => {
-    LogBox.ignoreLogs([
-      'Warning: Encountered two children with the same key, `[object Object]`. Keys should be unique so that components maintain their identity across updates',
-    ]);
-  }, []);
-
-  const counter = useSelector(state => state.countReducer);
-  const {price, id, Img, title, qty} = props;
-  const dispatch = useDispatch();
-  const addGroceryItems = useSelector(
-    state => state.groceryReducers.groceryItems,
-  );
-  const removeGroceryItem = useSelector(
-    state => state.groceryReducers.groceryItems,
-  );
-  const clearFromCarts = useSelector(
-    state => state.groceryReducers.groceryItems,
-  );
-  console.log('ffhfhfh', clearFromCarts);
-  // console.log("cart item>>>>>>>>>>>>>>>>>>" ,Cartssss)
-
-  const [modal, setModal] = useState(false);
-  return (
-    <ScrollView>
-      <View>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 10,
-          }}>
-          <Text style={{fontSize: 25, fontWeight: 'bold', color: '#000'}}>
-            My Cart
-          </Text>
-          <TouchableOpacity onPress={() => dispatch(clearFromCart())}>
-            <Text style={{color: '#000', left: 150}}>All CLEAR</Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <FlatList
-            data={addGroceryItems}
-            renderItem={item => renderItem(item, dispatch, counter)}
-            keyExtractor={item => item}
-          />
-          <View>
+          <View style={{position: 'absolute', marginLeft: 350, marginTop: 40}}>
             <TouchableOpacity
-              style={{
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                marginTop: 20,
-                padding: 20,
-                backgroundColor: '#53B175',
-                borderRadius: 15,
-                marginLeft: 20,
-                marginRight: 20,
-                flexDirection: 'row',
-                marginBottom: 20,
-              }}
-              // onPress={()=>{navigation.navigate('OrderAccepted')}}
-              onPress={() => setModal(true)}>
-              <Text
-                style={{color: '#000', fontWeight: 'bold', marginRight: 70}}>
-                Go to Checkout
-              </Text>
-              <Text style={{color: '#000', fontWeight: 'bold'}}>
-                {' '}
-                ₹ {price * addGroceryItems}
-              </Text>
+              onPress={() => dispatch(removeGroceryItem(item.key))}>
+              <Image style={{}} source={require('../Assets/cross.png')} />
             </TouchableOpacity>
-
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modal}
-              onRequestClose={() => {
-                setModal(true);
-              }}>
-              <Checkout closeBtn={setModal} />
-            </Modal>
           </View>
         </View>
+      </ScrollView>
+    );
+  };
+  
+
+  return (
+    // <ScrollView>
+    <View style={{marginBottom: 300}}>
+      <View
+        style={{
+          marginTop: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+        }}>
+        <Text
+          style={{
+            fontSize: 25,
+            fontWeight: 'bold',
+            color: '#000',
+            marginLeft: 125,
+          }}>
+          My Cart
+        </Text>
+        <TouchableOpacity
+          style={{marginTop: 5, marginRight: -10}}
+          onPress={() => dispatch(clearFromCart())}>
+          {/* <Image
+            style={{width: 25, height: 25}}
+            source={require('../Assets/bin.png')}></Image> */}
+            <Text>
+              All CLEAR
+            </Text>
+        </TouchableOpacity>
       </View>
-    </ScrollView>
+
+      <View>
+        <FlatList
+          data={addtoBasketCounter}
+          renderItem={item => renderItem(item)}
+          keyExtractor={item => item.id}
+          // onRefresh={}
+        />
+        {/* BUTONNNNNNNNNN */}
+        <View>
+          <TouchableOpacity
+            style={{
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+              marginTop: 20,
+              padding: 20,
+              backgroundColor: '#53B175',
+              borderRadius: 15,
+              marginLeft: 20,
+              marginRight: 20,
+              flexDirection: 'row',
+              marginBottom: 20,
+            }}
+            // onPress={()=>{navigation.navigate('OrderAccepted')}}
+            onPress={() => setModal(true)}>
+            <Text style={{color: '#000', fontWeight: 'bold', marginRight: 90}}>
+              Go to Checkout
+            </Text>
+            <Text style={{color: '#000', fontWeight: 'bold'}}>
+           
+            </Text>
+          </TouchableOpacity>
+
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modal}
+            onRequestClose={() => {
+              setModal(false);
+            }}>
+             <Checkout closeBtn={setModal}  /> 
+          </Modal>
+        </View>
+      </View>
+    </View>
+    // </ScrollView>
   );
 };
 

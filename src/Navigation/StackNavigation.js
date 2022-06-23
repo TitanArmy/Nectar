@@ -62,6 +62,7 @@ const MyComponent = () => {
         name="Signin"
         initialRouteName={Signin}
         component={Signin}
+        initial={true}
       />
 
       <Stack.Screen 

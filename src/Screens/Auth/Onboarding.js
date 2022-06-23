@@ -19,21 +19,22 @@ const OnBoarding = ({navigation}) => {
         style={styles.image}>
         <Image
           source={require('../../Assets/carrot.png')}
-          style={{alignSelf: 'center', top: 439, left: 20}}
+          style={{alignSelf: 'center', top: 359, left: 21}}
         />
         <View
           style={{
             alignItems: 'center',
             justifyContent: 'center',
             position: 'absolute',
-            marginVertical:515,
-            marginHorizontal:110
+            marginVertical:425,
+            marginHorizontal:110,
+            left:10
             
           }}>
-          <Text style={{fontSize: 40, fontWeight: 'bold', color: '#fff'}}>
+          <Text style={{fontSize: 33, fontWeight: 'bold', color: '#fff'}}>
             Welcome
           </Text>
-          <Text style={{fontSize: 40, fontWeight: 'bold', color: '#fff'}}>
+          <Text style={{fontSize: 30, fontWeight: 'bold', color: '#fff'}}>
             To Our Store
           </Text>
         </View>
@@ -42,15 +43,15 @@ const OnBoarding = ({navigation}) => {
             alignItems: 'center',
             justifyContent: 'center',
             position: 'absolute',
-            marginHorizontal: 100,
-            marginVertical:632,
+            marginHorizontal: 30,
+            marginVertical:532,
           }}>
-          <Text style={{fontSize: 14, color: '#FCFCFC'}}>
+          <Text style={{fontSize: 14,marginLeft:40, color: '#FCFCFC'}}>
             Get Your Groceries in as fast as one hour
           </Text>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Social')}>
+          onPress={() => navigation.navigate('BottomNavigation')}>
           <Text style={styles.text}>Get Started</Text>
         </TouchableOpacity>
       </ImageBackground>
@@ -83,13 +84,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     alignItems: 'center',
-    marginTop: 630,
+    marginTop: 560,
     padding: 20,
     backgroundColor: '#53B175',
     borderRadius: 40,
     width: 320,
     height: 70,
-    marginHorizontal: 55,
+    marginHorizontal: 35,
   },
   text2: {
     fontSize: 35,

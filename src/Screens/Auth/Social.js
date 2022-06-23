@@ -3,6 +3,7 @@ import React from 'react'
 
 const Social = ({navigation}) => {
   return (
+    <>
     <View style={{backgroundColor:'white'}}>
      <Image
      source={(require('../../Assets/mask.png'))}
@@ -41,6 +42,7 @@ const Social = ({navigation}) => {
         </Text>
         </TouchableOpacity>
     </View>
+    </>
   )
 }
 

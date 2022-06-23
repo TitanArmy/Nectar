@@ -23,7 +23,7 @@ import {LogBox} from 'react-native';
 const ProductDetail = props => {
   useEffect(() => {
     LogBox.ignoreLogs([
-      'Warning: Failed prop type: Invalid props.style key `uri` supplied to `Image`',
+      'Warning: Encountered two children with the same key ',
     ]);
   }, []);
 
@@ -71,7 +71,7 @@ const ProductDetail = props => {
               ) : (
                 <Image
                   style={styles.centerView}
-                  source={require('../Assets/heart.png')}
+                  source={require('../Assets/heart.png')} 
                 />
               )}
             </TouchableOpacity>
@@ -84,7 +84,6 @@ const ProductDetail = props => {
               onPress={() =>
                 dispatch(
                   decrement({
-                    id: id,
                     Img: Img,
                     title: title,
                     qty: qty,
@@ -100,7 +99,6 @@ const ProductDetail = props => {
               onPress={() =>
                 dispatch(
                   increment({
-                    id: id,
                     Img: Img,
                     title: title,
                     qty: qty,
@@ -157,12 +155,11 @@ const ProductDetail = props => {
           onPress={() =>
             dispatch(
               addGroceryItem({
-                id: id,
                 Img: Img,
                 title: title,
                 qty: qty,
                 price: price ,
-                amount:amount                                                                                * counter.count,
+                amount:amount
               }),
             )
           }>

@@ -8,25 +8,27 @@ import {
   ScrollView,
 } from 'react-native';
 import {TextInput} from 'react-native-paper';
+import {useDispatch} from 'react-redux';
+import {Login} from '../Store/actions/action';
 
 import auth from '@react-native-firebase/auth'
 
 // create a component
 const Loging = ({navigation}) => {
 
-        const [email, setEmail] = useState('')
+  
+
+        const [username, setUsername] = useState('')
         const [password, setPassword]= useState('')
         const [errortext, setErrortext] = useState("");
         const passwordInputRef = createRef();
 
-     
-
-
-
-
+        
+          const dispatch = useDispatch();
           const handleLogin=()=>{
+            dispatch(Login(username, password));
             setErrortext("");
-            if (!email) {
+            if (!username) {
               alert("Please fill Email");
               return;
             }
@@ -35,7 +37,7 @@ const Loging = ({navigation}) => {
               return; }
 
             auth()
-              .signInWithEmailAndPassword(email, password)
+              .signInWithEmailAndPassword(username, password)
               .then((user) => {
                 console.log(user);
                 // If server response message same as Data Matched
@@ -55,10 +57,6 @@ const Loging = ({navigation}) => {
               });
           }
 
-
-
-
-
   return (
     <View style={{padding: 25}}>
       <View style={styles.container}>
@@ -75,9 +73,9 @@ const Loging = ({navigation}) => {
       <TextInput
         style={{marginBottom: 20}}
         label="Email"
-        value={email}
+        value={username}
         keyboardType={'email-address'}
-        onChangeText={email => setEmail(email)}
+        onChangeText={username => setUsername(username)}
       />
 
       <TextInput
@@ -92,25 +90,20 @@ const Loging = ({navigation}) => {
         }
       />
 
-
       <TouchableOpacity
      onPress={handleLogin}
       style={styles.button}>
         <Text style={styles.buttonText}>LOG IN</Text>
       </TouchableOpacity>
 
-
       <TouchableOpacity  onPress={()=> navigation.navigate('Signup')}  >
         <Text style={styles.text2}>Don't have an account? Signup</Text>
-        
+
         </TouchableOpacity>
-    
 
             <TouchableOpacity  onPress={()=> navigation.navigate('Forgotpass')}>
                 <Text style={{marginLeft:50,marginTop:30,color:'black'}}>Forgot Passsword?</Text>
             </TouchableOpacity>
-
-       
 
     </View>
   );
@@ -162,5 +155,3 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 export default Loging;
-
-

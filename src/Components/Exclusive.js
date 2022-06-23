@@ -48,6 +48,7 @@ const renderItem = ({item},navigation,dispatch) => {
           onPress={() => {
             navigation.navigate('ProductDetail', {
               id:item.id,
+           amount:item.amount,
               Img:item.Img,
               title: item.title,
               category: item.category,
@@ -74,7 +75,8 @@ const renderItem = ({item},navigation,dispatch) => {
           onPress={() =>
            dispatch(
              addGroceryItem({
-               id:item.id,
+              id:item.id,
+              amount:item.amount,
                Img:item.Img,
                title: item.title,
                price: item.price,
