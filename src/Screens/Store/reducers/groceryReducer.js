@@ -19,20 +19,29 @@ export const INITIAL_STATE = {
 
 const groceryReducer = (state = INITIAL_STATE, {type, payload}) => {
   switch (type) {
+    
     case ADD_GROCERY_ITEM:
-      // console.log('weeeeeeeeee========>',payload)
-      return {
-        ...state,
-        groceryItems: state.groceryItems.concat({
-          key: Math.random(),
+      console.log('weeeeeeeeee========>',payload)
+      const newCart = [...state.groceryItems];
+    const item = 
+    newCart.find(x=>x.id===payload.id);
+    if(item)
+    {
+      item.amount++;
+    }
+    else{
+      newCart.push(payload)
+    }
+    return {
+      ...state,
+      groceryItems:newCart,
+      total:state.total+1
+    }
 
-          ...payload,
-        }),
-      };
     case REMOVE_GROCERY_ITEM:
       return {
         ...state,
-        groceryItems: state.groceryItems.filter(item => item.key !== payload),
+        groceryItems: state.groceryItems.filter(item => item.id !== payload),
       };
     // case ADD_TO_CART:
     //   const newCart = {...state.groceryItems};

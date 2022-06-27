@@ -82,6 +82,7 @@ import database from '@react-native-firebase/database';
       <TouchableOpacity
       onPress={() => {
         navigation.navigate('ProductDetail', {
+          id:item.id,
               Img:item.Img,
               title: item.title,
               category: item.category,
@@ -113,6 +114,7 @@ import database from '@react-native-firebase/database';
         onPress={() =>
           dispatch(
             addGroceryItem({
+              id:item.id,
             amount:item.amount,
               Img:item.Img,
           title: item.title,

@@ -34,10 +34,13 @@ const HomeScreen = ({navigation}) => {
       {/* location */}
       <View>
       <TouchableOpacity  onPress={()=>{navigation.navigate('Delivery')}}>
-        <Image  
+        {/* <Image  
           style={{marginHorizontal:100}}
           source={require('../Assets/location.png')}
-        />    
+        />     */}
+         <Text  style={{fontWeight:'bold',marginLeft:130,marginTop:3,color:'#666666'}}>
+          Noida, Sector 126
+        </Text>
       </TouchableOpacity>
       </View>
       

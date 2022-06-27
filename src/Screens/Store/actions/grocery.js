@@ -10,31 +10,31 @@ import {
     DECREMENT_COUNT
   } from "../actions/types";
   
-  export const addGroceryItem = (groceryItem) => {
+  export const addGroceryItem = (id) => {
     return {
       type: ADD_GROCERY_ITEM,
-      payload: groceryItem,
+      payload: id,
     };
   };
   
-  export const addToCart = (groceryItem) => {
+  export const addToCart = (id) => {
     return {
       type: ADD_TO_CART,
-      payload: groceryItem,
+      payload: id,
     };
   };
   
-  export const removeGroceryItem = (groceryItem) => {
+  export const removeGroceryItem = (id) => {
     return {
       type: REMOVE_GROCERY_ITEM,
-      payload: groceryItem,
+      payload: id,
     };
   };
   
-  export const removeFromCart = (groceryItem) => {
+  export const removeFromCart = (id) => {
     return {
       type: REMOVE_FROM_CART,
-      payload: groceryItem,
+      payload: id,
     };
   };
   

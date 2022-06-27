@@ -28,7 +28,6 @@ const OrderAccepted = ({navigation}) => {
          </Text>
      </View>
 <View>
-
      <TouchableOpacity style={{backgroundColor: '#53B175',alignItems:'center',bottom:390,marginHorizontal:25,borderRadius:10,padding:13}}
      onPress={()=>{navigation.navigate('ErrorScreen')}}
      >

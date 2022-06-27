@@ -7,6 +7,7 @@ import {
   Modal,
   StyleSheet,
   Button,
+  ToastAndroid
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
@@ -35,7 +36,19 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
  
+  const showToast =() =>{
+    try{
+    ToastAndroid.showWithGravity(
+      'Happy to See Myself On Top',
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+     
+    );
+    }catch(err){
+      console.log(err);
 
+    }
+  };
  
   const addtoBasketCounter = useSelector(
     state => state.groceryReducers.groceryItems,
@@ -48,6 +61,9 @@ const Cart = () => {
     console.log('item rednder cart', cartItem);
   const item=cartItem.item;
    
+ 
+  
+  
     return (
       <ScrollView>
         <View style={{flexDirection: 'row'}}>
@@ -120,11 +136,12 @@ const Cart = () => {
           </View>
           <View style={{position: 'absolute', marginLeft: 350, marginTop: 40}}>
             <TouchableOpacity
-              onPress={() => dispatch(removeGroceryItem(item.key))}>
+              onPress={() => dispatch(removeGroceryItem(item.id))}>
               <Image style={{}} source={require('../Assets/cross.png')} />
             </TouchableOpacity>
           </View>
         </View>
+        
       </ScrollView>
     );
   };
@@ -148,6 +165,7 @@ const Cart = () => {
           }}>
           My Cart
         </Text>
+        
         <TouchableOpacity
           style={{marginTop: 5, marginRight: -10}}
           onPress={() => dispatch(clearFromCart())}>
@@ -183,7 +201,10 @@ const Cart = () => {
               marginBottom: 20,
             }}
             // onPress={()=>{navigation.navigate('OrderAccepted')}}
-            onPress={() => setModal(true)}>
+            onPress={() => setModal(true,showToast())}>
+              
+
+        
             <Text style={{color: '#000', fontWeight: 'bold', marginRight: 90}}>
               Go to Checkout
             </Text>

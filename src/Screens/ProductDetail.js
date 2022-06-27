@@ -8,6 +8,8 @@ import {
   DECREMENT_COUNT,
   decrement,
 } from '../Screens/Store/actions/counters';
+import Review from '../Components/Review'
+
 import {Button} from 'react-native-paper';
 import counter from './Store/reducers/countReducer';
 import {Pricecounter} from '../Screens/Store/reducers/Pricecounter';
@@ -135,8 +137,12 @@ const ProductDetail = props => {
           <Image source={require('../Assets/rightArrow.png')} />
         </View>
 
-        <View style={styles.reviewCard}>
-          <Text style={styles.review}>Review</Text>
+        <View>
+          <Text  style={{color: '#000', fontSize: 17, fontWeight: '500',marginLeft:15,top:50}}>
+            Review
+          </Text>
+          <Review/>
+          {/* <Text style={styles.review}>Review</Text>
           <View style={styles.star}>
             <Image source={require('../Assets/star.png')} />
             <Image source={require('../Assets/star.png')} />
@@ -147,7 +153,7 @@ const ProductDetail = props => {
               style={styles.lastStar}
               source={require('../Assets/rightArrow.png')}
             />
-          </View>
+          </View> */}
         </View>
 
         <TouchableOpacity

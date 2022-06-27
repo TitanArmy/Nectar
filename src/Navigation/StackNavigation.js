@@ -16,7 +16,6 @@ import ProductDetail from '../Screens/ProductDetail';
 import {View, Text, StyleSheet} from 'react-native';
 import Social from '../Screens/Auth/Social';
 
-
 const Stack = createNativeStackNavigator();
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -30,8 +29,6 @@ const MyComponent = () => {
   //   }, 1500);
   // }, []);
   return (
-
-    
     <Stack.Navigator>
       {/* {showSplashScreen ? (
         <Stack.Screen
@@ -42,7 +39,6 @@ const MyComponent = () => {
         />
       ) : null} */}
 
-
       <Stack.Screen
         name="OnBoarding"
         initialRouteName={OnBoarding}
@@ -52,12 +48,12 @@ const MyComponent = () => {
         }}
       />
       <Stack.Screen
-  name="BottomNavigation"
-  component={BottomNavigation}
-  options={{
-    headerShown: false,
-  }}
-/>
+        name="BottomNavigation"
+        component={BottomNavigation}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
         name="Signin"
         initialRouteName={Signin}
@@ -65,22 +61,16 @@ const MyComponent = () => {
         initial={true}
       />
 
-      <Stack.Screen 
-        name="OtpScreen" 
-        component={OtpScreen} />
+      <Stack.Screen name="OtpScreen" component={OtpScreen} />
 
-      <Stack.Screen 
-         name="Location" 
-         component={Location} />
+      <Stack.Screen name="Location" component={Location} />
 
-      <Stack.Screen 
-        name="Map" 
-        component={Map} />
+      <Stack.Screen name="Map" component={Map} />
 
       <Stack.Screen
         name="Login"
         options={{
-        headerShown: false,
+          headerShown: false,
         }}
         component={Login}
       />

@@ -8,37 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import database from '@react-native-firebase/database';
-import {LogBox} from "react-native";
+import {LogBox} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import { addGroceryItem } from '../Screens/Store/actions/grocery';
+import {addGroceryItem} from '../Screens/Store/actions/grocery';
 
-// const data = [
-  //   {
-    //     id: 1,
-    //     pic: require('../Assets/pngfuel.png'),
-    //     name: 'Diet Coke',
-    //     qty: '355ml',
-//     price: 1.89,
-//   },
-//   {
-//     id: 2,
-//     pic: require('../Assets/homebanana.png'),
-//     name: 'sprite',
-//     qty: '355ml',
-//     price: 1.99,
-//   },
-//   {
-  //     id: 3,
-  //     pic: require('../Assets/pngfuel1.png'),
-//     name: 'Diet Coke',
-//     qty: '355ml',
-//     price: 1.99,
-//   },
-// ];
-
-
-const renderItem = ({item},navigation,dispatch) => {
- 
+const renderItem = ({item}, navigation, dispatch) => {
   if (item.offer == 'ExclusiveOffer') {
     return (
       // CARD1111111111111111111111
@@ -48,8 +22,8 @@ const renderItem = ({item},navigation,dispatch) => {
           onPress={() => {
             navigation.navigate('ProductDetail', {
               id:item.id,
-           amount:item.amount,
-              Img:item.Img,
+              amount: item.amount,
+              Img: item.Img,
               title: item.title,
               category: item.category,
               price: item.price,
@@ -71,20 +45,20 @@ const renderItem = ({item},navigation,dispatch) => {
 
         <View style={styles.itemPriceView}>
           <Text style={styles.itemPrice}>${item.price}</Text>
-          <TouchableOpacity style={styles.itemQtyBtn}
-          onPress={() =>
-           dispatch(
-             addGroceryItem({
-              id:item.id,
-              amount:item.amount,
-               Img:item.Img,
-               title: item.title,
-               price: item.price,
-               qty: item.qty                                                                          
-            }),
-           )
-         }
-          >
+          <TouchableOpacity
+            style={styles.itemQtyBtn}
+            onPress={() =>
+              dispatch(
+                addGroceryItem({
+                  id: item.id,
+                  amount: item.amount,
+                  Img: item.Img,
+                  title: item.title,
+                  price: item.price,
+                  qty: item.qty,
+                }),
+              )
+            }>
             <Image source={require('../Assets/plusWhite.png')} />
           </TouchableOpacity>
         </View>
@@ -94,17 +68,13 @@ const renderItem = ({item},navigation,dispatch) => {
 };
 
 const ExclusiveCrousel = ({navigation}) => {
-
-  LogBox.ignoreLogs([
-    "VirtualizedLists should never be nested inside"
-  ])
+  LogBox.ignoreLogs(['VirtualizedLists should never be nested inside']);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     readUserData();
   }, []);
 
-  
   const dispatch = useDispatch();
   // const addGroceryItems = useSelector(
   //   state => state.groceryReducers.groceryItems,
@@ -123,7 +93,7 @@ const ExclusiveCrousel = ({navigation}) => {
     <FlatList
       data={data}
       keyExtractor={item => item.id}
-      renderItem={(item) => renderItem(item, navigation,dispatch)}
+      renderItem={item => renderItem(item, navigation, dispatch)}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
     />

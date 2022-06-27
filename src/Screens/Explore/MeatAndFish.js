@@ -81,7 +81,9 @@ const renderItem = ({item}, navigation,dispatch) => {
       <TouchableOpacity
       onPress={() => {
             navigation.navigate('ProductDetail', {
-              Img:item.Img,
+              id:item.id,
+              amount: item.amount,
+              Img: item.Img,
               title: item.title,
               category: item.category,
               price: item.price,
@@ -112,10 +114,11 @@ const renderItem = ({item}, navigation,dispatch) => {
           dispatch(
             addGroceryItem({
               id:item.id,
+              amount: item.amount,
               Img:item.Img,
               title: item.title,
               price: item.price,
-              qty: item.qty                                                                          
+              qty: item.qty                                                                           
            }),
           )
         }

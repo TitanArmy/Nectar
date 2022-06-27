@@ -18,7 +18,7 @@ const ModalPoup = ({visible, children}) => {
   }, [visible]);
   const toggleModal = () => {
     if (visible) {
-      setShowModal(true);
+      setShowModal(true);                                                                                                                                                                                                                                                                                                                                                                                           
       Animated.spring(scaleValue, {
         toValue: 1,
         duration: 300,
