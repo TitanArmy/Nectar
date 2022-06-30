@@ -3,7 +3,6 @@ import {
     View,
     Alert
  }  from 'react-native';
-import { black, white } from 'react-native-paper/lib/typescript/styles/colors';
 import { Rating } from 'react-native-ratings'
 
 const Review = () => {
